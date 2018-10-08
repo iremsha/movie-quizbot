@@ -1,58 +1,50 @@
-import javax.swing.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.function.Function;
-
-
 class Bot {
 
     private String instruction;
     private Player player;
     private QuizBot quizBot;
-
+    private String help;
     String lastMessage;
 
 
 
-    public Bot(String instruction, Player player, QuizBot quizBot){
+    Bot(String instruction, String help, Player player, QuizBot quizBot){
         this.instruction = instruction;
         this.player = player;
         this.quizBot = quizBot;
+        this.help = help;
     }
 
-    public String getStartMessage(){
+    String getStartMessage(){
         return instruction;
     }
 
-    public String getNextMessage(){
-        player.lastOfferedQuestion = quizBot.getQuestionToOffer(player);
-        return player.lastOfferedQuestion;
+    String getNextMessage(){
+        return quizBot.getQuestionToOffer(player);
     }
 
-    public String processInput(String userInput, Player currentPlayer){
+    String processInput(String lastMessage, String userInput, Player currentPlayer){
         if (isCommand(userInput))
             return processCommand(userInput, currentPlayer);
-        return quizBot.analyzeUserAnswer(userInput, player);
+        return quizBot.analyzeUserAnswer(lastMessage, userInput, player);
     }
 
 
-    private boolean isCommand(String userInput){
+    boolean isCommand(String userInput){
 //        return COMMANDS.containsKey(userInput);
         return userInput.startsWith("\\");
     }
 
-    private String processCommand(String command, Player currentPlayer){
+    String processCommand(String command, Player currentPlayer){
         switch(command) {
             case "\\start" :
                 return instruction;
 
             case "\\help" :
-                return instruction;
+                return help;
 
             case "\\score" :
-                return "555";//toString(currentPlayer.score);
+                return String.valueOf(currentPlayer.score);
 
             case "\\stop" :
                 currentPlayer.wantsToPlay = false;

@@ -1,9 +1,8 @@
 import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
 import java.util.Random;
-import java.util.Scanner;
 
-public class QuizBot {
+class QuizBot {
 
 
     private HashMap<String, String> questionAndAnswer;
@@ -18,20 +17,23 @@ public class QuizBot {
         this.player = player;
     }
 
-    public String analyzeUserAnswer(String userAnswer, Player player){
+    String analyzeUserAnswer(String question, String userAnswer, Player player){
 
-        String question = player.lastOfferedQuestion;
+//        String question = player.lastOfferedQuestion;
         String correctAnswer = questionAndAnswer.get(question);
 
         if (userAnswer.equalsIgnoreCase(correctAnswer)){
-            praiseUser(player, 1, question);
+            praiseUser(player, question);
             return goodJobMessage;
         }
-         noticeUserFail(player, question);
+        else if(userAnswer.startsWith("\\")) //Привет, я костыль
+            return ".";
+
+        noticeUserFail(player, question);
         return badJobMessage;
     }
 
-    public String getQuestionToOffer(Player player){
+    String getQuestionToOffer(Player player){
         String question = getRandomQuestion();
         while (player.Known.contains((question))){
             question = getRandomQuestion();
@@ -39,20 +41,30 @@ public class QuizBot {
         return question;
     }
 
-    private void praiseUser(Player player, int score, String guestion){
-        player.score += score;
-        player.Known.add(guestion);
+    private void praiseUser(Player player, String question){
+        addScore(player);
+        addKnowQuestion(player, question);
+    }
+
+    int addScore(Player player){
+        player.score += 1;
+        return player.score;
+    }
+
+    HashSet<String> addKnowQuestion(Player player, String qustion){
+        player.Known.add(qustion);
+        return player.Known;
     }
 
     private void noticeUserFail(Player player, String question){
         player.Failures.add(question);
     }
 
+
     private String getRandomQuestion(){
         Random rnd = new Random();
         int rndNumber = rnd.nextInt(questionAndAnswer.size());
         return questionAndAnswer.keySet().toArray()[rndNumber].toString();
     }
-
 
 }

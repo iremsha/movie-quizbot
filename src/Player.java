@@ -1,16 +1,21 @@
 import java.util.HashSet;
-import java.util.List;
 
 class Player {
-    String name;
+    private String name;
     int score = 0;
     HashSet<String> Known = new HashSet<String >();
     HashSet<String> Failures = new HashSet<String >();
     boolean wantsToPlay = true;
 
-    String lastOfferedQuestion;
+//    String lastOfferedQuestion;
 
     Player(String name){
         this.name = name;
     }
+
+    public static void increaseScore(Player player){
+        player.score += 1;
+    }
+
+
 }
