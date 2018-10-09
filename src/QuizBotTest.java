@@ -28,7 +28,7 @@ public class QuizBotTest {
 
     @Test
     public void analyzeUserAnswerGoodAnswer() {
-        assertEquals("Bad job", quizBot.analyzeUserAnswer("", "", elmo)); //чтобы затестить надо изменить
+        assertEquals("Bad job", quizBot.analyzeUserAnswer("", "", elmo)); 
     }
     @Test
     public void getQuestionToOffer() {
