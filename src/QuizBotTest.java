@@ -27,12 +27,9 @@ public class QuizBotTest {
 
     @Test
     public void analyzeUserAnswerGoodAnswer() {
-<<<<<<< HEAD
-        assertEquals("Bad job", quizBot.analyzeUserAnswer("", "", elmo)); 
-=======
         assertEquals("Bad job", quizBot.analyzeUserAnswer("", "", elmo));
->>>>>>> d864b5c75891466313406f3a52e63247dcfe99a5
     }
+
     @Test
     public void getQuestionToOffer() {
         assertTrue(data.containsKey(quizBot.getQuestionToOffer(elmo)));
