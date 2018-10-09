@@ -13,6 +13,7 @@ public class BotTest {
     private String botInstruction = "I'd like you to play the game!\n" +
             "I will send you the name of movie and you'll name the director." +
             "You've got 3 attemps for every movie\n";
+
     private String botHelp = "\\start - start game \n" +
             "\\score - show current score \n" +
             "\\stop - stop game \n" +
@@ -57,7 +58,7 @@ public class BotTest {
 
     @Test
     public void processInputNotFoundCommand() {
-        assertEquals("", bot.processInput("", "\\PAMAGITE", elmo));
+        assertEquals("Incorrect command", bot.processInput("", "\\PAMAGITE", elmo));
     }
 
 

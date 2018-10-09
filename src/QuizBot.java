@@ -19,15 +19,12 @@ class QuizBot {
 
     String analyzeUserAnswer(String question, String userAnswer, Player player){
 
-//        String question = player.lastOfferedQuestion;
         String correctAnswer = questionAndAnswer.get(question);
 
         if (userAnswer.equalsIgnoreCase(correctAnswer)){
             praiseUser(player, question);
             return goodJobMessage;
         }
-        else if(userAnswer.startsWith("\\")) //Привет, я костыль
-            return ".";
 
         noticeUserFail(player, question);
         return badJobMessage;

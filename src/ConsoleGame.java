@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 class ConsoleGame {
     private HashMap<String, String> data = new HashMap<String, String>(){{
-    put("Pulp Fiction", "T");
-    put("A Clockwork Orange", "K");
-    put("Blue Velvet", "L");
+    put("Pulp Fiction", "Tarantino");
+    put("A Clockwork Orange", "Kubrick");
+    put("Blue Velvet", "Lynch");
 }};
 
     void startGame(){
@@ -14,8 +14,7 @@ class ConsoleGame {
         Player player = createUser();
 
         String botInstruction = "I'd like you to play the game!\n" +
-                "I will send you the name of movie and you'll name the director." +
-                "You've got 3 attemps for every movie\n";
+                "I will send you the name of movie and you'll name the director.\n";
 
         String botHelp = "\\start - start game \n" +
                 "\\score - show current score \n" +
@@ -28,14 +27,14 @@ class ConsoleGame {
 
         System.out.println(bot.getStartMessage());
 
-        while (player.wantsToPlay && player.Known.size() != 3){
+        while (player.wantsToPlay && player.Known.size() != data.size()){
             String nextBotMessage = bot.getNextMessage();
             System.out.println("Next movie: " + nextBotMessage );
             String userAnswer = scan.nextLine();
             String botAnswer = bot.processInput(nextBotMessage, userAnswer, player);
             System.out.println(botAnswer);
         }
-        //Метод предлагающий игру на исправление ошибок?
+
         System.out.println("Your score: " + player.score);
         System.out.println("End game.");
     }

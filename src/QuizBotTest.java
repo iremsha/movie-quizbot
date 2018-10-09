@@ -18,7 +18,7 @@ public class QuizBotTest {
 
     @Test
     public void analyzeUserAnswerCommand() {
-        assertEquals(".", quizBot.analyzeUserAnswer("", "\\start", elmo));
+        assertEquals("Bad job", quizBot.analyzeUserAnswer("", "\\start", elmo));
     }
 
     @Test
