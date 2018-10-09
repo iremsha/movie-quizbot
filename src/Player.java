@@ -17,5 +17,9 @@ class Player {
         player.score += 1;
     }
 
+    public String getScore(){
+        return "Your score: " + score;
+    }
+
 
 }

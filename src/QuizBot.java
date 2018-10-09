@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 
-class QuizBot {
+class QuizBot implements IQuizBot {
 
 
     private HashMap<String, String> questionAndAnswer;
@@ -17,7 +17,7 @@ class QuizBot {
         this.player = player;
     }
 
-    String analyzeUserAnswer(String question, String userAnswer, Player player){
+    public String analyzeUserAnswer(String question, String userAnswer, Player player){
 
         String correctAnswer = questionAndAnswer.get(question);
 
@@ -30,12 +30,12 @@ class QuizBot {
         return badJobMessage;
     }
 
-    String getQuestionToOffer(Player player){
+    public String getQuestionToOffer(Player player){
         String question = getRandomQuestion();
         while (player.Known.contains((question))){
             question = getRandomQuestion();
         }
-        return question;
+        return "Next movie: " + question;
     }
 
     private void praiseUser(Player player, String question){

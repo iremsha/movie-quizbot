@@ -29,13 +29,13 @@ class ConsoleGame {
 
         while (player.wantsToPlay && player.Known.size() != data.size()){
             String nextBotMessage = bot.getNextMessage();
-            System.out.println("Next movie: " + nextBotMessage );
+            System.out.println(nextBotMessage );
             String userAnswer = scan.nextLine();
             String botAnswer = bot.processInput(nextBotMessage, userAnswer, player);
             System.out.println(botAnswer);
         }
 
-        System.out.println("Your score: " + player.score);
+        System.out.println(player.getScore());
         System.out.println("End game.");
     }
 

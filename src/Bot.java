@@ -2,13 +2,11 @@ class Bot {
 
     private String instruction;
     private Player player;
-    private QuizBot quizBot;
+    private IQuizBot quizBot;
     private String help;
-    String lastMessage;
 
 
-
-    Bot(String instruction, String help, Player player, QuizBot quizBot){
+    Bot(String instruction, String help, Player player, IQuizBot quizBot){
         this.instruction = instruction;
         this.player = player;
         this.quizBot = quizBot;
