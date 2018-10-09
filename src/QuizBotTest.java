@@ -5,8 +5,7 @@ import java.util.HashMap;
 import static org.junit.Assert.*;
 
 public class QuizBotTest {
-    private HashMap<String, String> data = new HashMap<String, String>()
-    {{
+    private HashMap<String, String> data = new HashMap<>() {{
         put("Pulp Fiction", "1");
         put("A Clockwork Orange", "2");
         put("Blue Velvet", "3");
@@ -28,7 +27,11 @@ public class QuizBotTest {
 
     @Test
     public void analyzeUserAnswerGoodAnswer() {
+<<<<<<< HEAD
         assertEquals("Bad job", quizBot.analyzeUserAnswer("", "", elmo)); 
+=======
+        assertEquals("Bad job", quizBot.analyzeUserAnswer("", "", elmo));
+>>>>>>> d864b5c75891466313406f3a52e63247dcfe99a5
     }
     @Test
     public void getQuestionToOffer() {

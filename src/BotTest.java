@@ -2,11 +2,12 @@ import org.junit.Test;
 
 import java.util.HashMap;
 
-import static org.junit.Assert.*;
+import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class BotTest {
-    private HashMap<String, String> data = new HashMap<String, String>(){{
-        put("Pulp Fiction", "1");
+    private HashMap<String, String> data = new HashMap<>() {{
+        put("Pulp Fiction", "T");
         put("A Clockwork Orange", "2");
         put("Blue Velvet", "3");
     }};
