@@ -1,10 +1,16 @@
-class Bot {
+class Bot implements IBot {
 
     private String instruction;
     private Player player;
     private IQuizBot quizBot;
     private String help;
 
+//    Bot(String instruction, String help, String userName, IQuizBot quizBot){
+//        this.instruction = instruction;
+//        this.player = Player(userName);
+//        this.quizBot = quizBot;
+//        this.help = help;
+//    }
 
     Bot(String instruction, String help, Player player, IQuizBot quizBot){
         this.instruction = instruction;
@@ -13,15 +19,18 @@ class Bot {
         this.help = help;
     }
 
-    String getStartMessage(){
+
+    public String getStartMessage(){
         return instruction;
     }
 
-    String getNextMessage(){
+    public String getNextMessage(){
         return quizBot.getQuestionToOffer(player);
     }
 
-    String processInput(String lastMessage, String userInput, Player currentPlayer){
+    public String processInput(String lastMessage, String userInput, Player currentPlayer){
+        if (userInput.equals(""))
+            return "";
         if (isCommand(userInput))
             return processCommand(userInput, currentPlayer);
         return quizBot.analyzeUserAnswer(lastMessage, userInput, player);

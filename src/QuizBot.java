@@ -31,11 +31,13 @@ class QuizBot implements IQuizBot {
     }
 
     public String getQuestionToOffer(Player player){
+        if (!player.wantsToPlay || player.Known.size() == questionAndAnswer.size())
+            return "";
         String question = getRandomQuestion();
         while (player.Known.contains((question))){
             question = getRandomQuestion();
         }
-        return "Next movie: " + question;
+        return question;
     }
 
     private void praiseUser(Player player, String question){

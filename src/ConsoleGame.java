@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 
 class ConsoleGame {
-    private HashMap<String, String> data = new HashMap<String, String>(){{
+    private HashMap<String, String> data = new HashMap<>(){{
     put("Pulp Fiction", "Tarantino");
     put("A Clockwork Orange", "Kubrick");
     put("Blue Velvet", "Lynch");
@@ -27,19 +27,16 @@ class ConsoleGame {
 
         System.out.println(bot.getStartMessage());
 
-        while (player.wantsToPlay && player.Known.size() != data.size()){
+        while (true){
             String nextBotMessage = bot.getNextMessage();
             System.out.println(nextBotMessage );
             String userAnswer = scan.nextLine();
             String botAnswer = bot.processInput(nextBotMessage, userAnswer, player);
             System.out.println(botAnswer);
         }
+     }
 
-        System.out.println(player.getScore());
-        System.out.println("End game.");
-    }
-
-    private Player createUser(){
+    private Player createUser(){                    //вынести в новую обертку
         System.out.println("Enter your name");
         Scanner scan = new Scanner(System.in);
         String userName = scan.nextLine();
@@ -47,6 +44,4 @@ class ConsoleGame {
 
         return new Player(userName);
     }
-
-
 }
