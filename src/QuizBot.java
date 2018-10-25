@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.Scanner;
 
 class QuizBot implements IQuizBot {
 
@@ -12,11 +13,19 @@ class QuizBot implements IQuizBot {
     private String badJobMessage = "Bad job";
 
 
-    public QuizBot(HashMap<String, String> data, Player player){
+    public QuizBot(HashMap<String, String> data){
         questionAndAnswer = data;
-        this.player = player;
     }
 
+    public Player createUser(){
+        System.out.println("Enter your name");
+        Scanner scan = new Scanner(System.in);
+        String userName = scan.nextLine();
+        System.out.println("Hello, " + userName);
+
+        this.player = new Player(userName);
+        return this.player;
+    }
     public String analyzeUserAnswer(String question, String userAnswer, Player player){
 
         String correctAnswer = questionAndAnswer.get(question);
@@ -32,7 +41,7 @@ class QuizBot implements IQuizBot {
 
     public String getQuestionToOffer(Player player){
         if (!player.wantsToPlay || player.Known.size() == questionAndAnswer.size())
-            return "";
+            return "end";
         String question = getRandomQuestion();
         while (player.Known.contains((question))){
             question = getRandomQuestion();

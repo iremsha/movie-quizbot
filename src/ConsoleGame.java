@@ -10,9 +10,6 @@ class ConsoleGame {
 }};
 
     void startGame(){
-
-        Player player = createUser();
-
         String botInstruction = "I'd like you to play the game!\n" +
                 "I will send you the name of movie and you'll name the director.\n";
 
@@ -21,7 +18,8 @@ class ConsoleGame {
                 "\\stop - stop game \n" +
                 "\\help - help?";
 
-        QuizBot quizBot = new QuizBot(data, player);
+        QuizBot quizBot = new QuizBot(data);
+        Player player =  quizBot.createUser();
         Bot bot = new Bot(botInstruction, botHelp, player, quizBot);
         Scanner scan = new Scanner(System.in);
 
@@ -36,12 +34,4 @@ class ConsoleGame {
         }
      }
 
-    private Player createUser(){                    //вынести в новую обертку
-        System.out.println("Enter your name");
-        Scanner scan = new Scanner(System.in);
-        String userName = scan.nextLine();
-        System.out.println("Hello, " + userName);
-
-        return new Player(userName);
-    }
 }

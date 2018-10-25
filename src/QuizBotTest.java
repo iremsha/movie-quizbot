@@ -11,7 +11,7 @@ public class QuizBotTest {
         put("Blue Velvet", "3");
     }};
     private Player elmo = new Player("Elmo");
-    private QuizBot quizBot = new QuizBot(data, elmo);
+    private QuizBot quizBot = new QuizBot(data);
     private String goodJobMessage = "Good job";
 
 

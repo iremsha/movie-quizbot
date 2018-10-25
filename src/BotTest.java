@@ -20,7 +20,7 @@ public class BotTest {
             "\\stop - stop game \n" +
             "\\help - help?";
     private Player elmo = new Player("Elmo");
-    private QuizBot quizBot = new QuizBot(data, elmo);
+    private QuizBot quizBot = new QuizBot(data);
     private Bot bot = new Bot(botInstruction, botHelp, elmo, quizBot);
 
     @Test
