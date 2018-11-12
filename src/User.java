@@ -14,7 +14,8 @@ public class User {
         return Known.size();
     }
 
-    User(String login){
+    User(String login, String password){
         this.Login = login;
+        this.passwordHash = password.hashCode();
     }
 }

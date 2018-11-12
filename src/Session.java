@@ -9,4 +9,6 @@ public class Session {
 //    boolean gethasIdentifies(){
 //        return enterCorrectPassword;
 //    }
+    String enteredLogin;
+    boolean askForPassword;
 }

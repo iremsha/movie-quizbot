@@ -5,7 +5,6 @@ import java.util.List;
 class Bot implements IBot {
 
     private String instruction = "If you've already played enter '/log_in' and your login\n" +
-            // может login and password separated by space
             "Else enter '/create' and your login\n" +
             "If you want some more information enter '/help\n";
 
@@ -28,17 +27,19 @@ class Bot implements IBot {
         return instruction;
     }
 
-
-    public String processInput(String userInput, int sessionId) {
+    public String processInput(String userInput, int sessionId) { // исправить получение команды и аргумента
         Session session = sessions.get(sessionId);
         String command = getCommand(userInput);
         String argument = getArgument(userInput);
+
         if (isPriorityCommand(command)) {
             return processCommand(command, argument, sessionId);
         }
+        if (session.askForPassword){
+            return tryIdentifyUser(argument, session);
+        }
         if (session.user == null) {
-//            session.userLogin = userInput;
-            return "need to log in. Enter '/log_in' and your login or /create and new login";
+            return "Need log in. Enter '/log_in' and your login or /create and new login";
         }
         if (session.playing) {
             String quisBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
@@ -52,36 +53,18 @@ class Bot implements IBot {
         return "Unexpected input. Try '/help'";
     }
 
-
-    boolean isCommand(String userInput) {
-//        return COMMANDS.containsKey(userInput);
-        return userInput.startsWith("/");
-    }
-
-    private boolean isPriorityCommand(String input) {
-        List<String> priorityCommands = Arrays.asList(new String[]{"/start", "/help", "/stop", "/create", "/log_in"});
-        return priorityCommands.contains(input); //проверить сравнение строк в данном случае
-    }
-
     private String processCommand(String command, String argument, int sessionId) {
         Session session = sessions.get(sessionId);
+        session.askForPassword = false;
         switch (command) {
             case "/start":
                 return instruction;
             case "/help":
                 return help;
             case "/create":
-                if (userManager.isUserInDB(argument)){
-                    return "This login has already taken";
-                }
-                session.user = userManager.createUser(argument);
-                return "User created";
+                return processCommandCreate(argument, session);
             case "/log_in":
-                if (!userManager.isUserInDB(argument)) {
-                    return "No users with this login. Try again";
-                }
-                session.user = userManager.getUser(argument);
-                return "you've log in as " + session.user.Login;
+                return processCommandLogin(argument, session);
             case "/score":
                 return processCommandScore(argument, session);
             case "/movies": //later add watch friends' movies
@@ -90,7 +73,7 @@ class Bot implements IBot {
 //                var r = from().where("name", eq("Arthur"))
                 return getLogins(session.user.Friends);
             case "/add_friend":
-                return processCommandAddFriend(argument, session); //передавать не id а конкретную сессию или поля
+                return processCommandAddFriend(argument, session);
             case "/play":
                 session.playing = true;
                 String firstQuestion = quizBot.getQuestionToOffer(session.user);
@@ -123,6 +106,33 @@ class Bot implements IBot {
         return String.valueOf(userManager.getUser(login).Score);
     }
 
+    private String processCommandCreate(String login, Session session) {
+        if (login.isEmpty()){
+            return "Empty login";
+        }
+        session.user = null; //????
+        if (userManager.isUserInDB(login)){
+            return "This login has already taken";
+        }
+//                session.user = userManager.createUser(argument);
+        session.enteredLogin = login;
+        session.askForPassword = true;
+        return "Enter password";
+    }
+    private String processCommandLogin(String login, Session session) {
+        if (login.isEmpty()){
+            return "Empty login";
+        }
+        session.user = null;
+        if (!userManager.isUserInDB(login)) {
+            return "No users with this login. Try again";
+        }
+//                session.user = userManager.getUser(argument);
+        session.enteredLogin = login;
+        session.askForPassword = true;
+        return "Enter password"; // should be in spec method
+//                return "you've log in as " + session.user.Login;
+   }
     private String processCommandAddFriend(String argument, Session session) {
         String login = argument;
         if (login.equals("")) {
@@ -148,6 +158,15 @@ class Bot implements IBot {
         return userManager.areFriends(user, anotherUser);
     }
 
+    boolean isCommand(String userInput) {
+//        return COMMANDS.containsKey(userInput);
+        return userInput.startsWith("/");
+    }
+
+    private boolean isPriorityCommand(String input) {
+        List<String> priorityCommands = Arrays.asList(new String[]{"/start", "/help", "/stop", "/create", "/log_in"});
+        return priorityCommands.contains(input); //проверить сравнение строк в данном случае
+    }
     private String getString(Iterable<String> iterable) {
         // how to ??
         StringBuilder result = new StringBuilder();
@@ -165,10 +184,31 @@ class Bot implements IBot {
     }
 
     private String getCommand(String input) {
-        return input.split("\\s", 2)[0];
+        if (input.startsWith("/")){
+            return input.split("\\s", 2)[0];
+        }
+        return "";
     }
     private String getArgument(String input) {
-        String[] arrInput = input.split("\\s", 2);
-        return (arrInput.length < 2) ? "" : arrInput[1];
+        if (input.startsWith("/")) {
+            String[] arrInput = input.split("\\s", 2);
+            return (arrInput.length < 2) ? "" : arrInput[1];
+        }
+        return input;
+    }
+
+    private String tryIdentifyUser(String password, Session session){
+        String login = session.enteredLogin;
+        if (userManager.isUserInDB(login)){
+            if (userManager.isCorrectPassword(login, password)){
+                session.askForPassword = false;
+                session.user = userManager.getUser(session.enteredLogin);
+                return "You log in as " + login;
+            }
+            return "Incorrect password. Try again";
+        }
+        session.askForPassword = false;
+        session.user = userManager.createUser(login, password);
+        return "Profile has created. You log in as " + session.user.Login;
     }
 }

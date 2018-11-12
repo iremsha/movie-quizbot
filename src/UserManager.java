@@ -9,10 +9,19 @@ public class UserManager implements IUserManager {
     public boolean isUserInDB(String userLogin){
             return dataBase.containsKey(userLogin);
     }
-    public User createUser(String login){
-        User user = new User(login);
+//    public User createUser(String login){
+//        User user = new User(login);
+//        dataBase.put(login, user);
+//        return user;
+//    }
+    public User createUser(String login, String password){
+        User user = new User(login, password);
         dataBase.put(login, user);
         return user;
+    }
+    public boolean isCorrectPassword(String login, String password){
+        User user = getUser(login);
+        return user.passwordHash == password.hashCode();
     }
 
     public User getUser(String userName){//mb write if not return null
