@@ -4,7 +4,7 @@ import java.util.List;
 
 class Bot implements IBot {
 
-    private String instruction = "If you've already played enter '/log_in' and your login\n" +
+    private String instruction = "If you've already played enter '/login' and your login\n" +
             "Else enter '/create' and your login\n" +
             "If you want some more information enter '/help\n";
 
@@ -29,6 +29,9 @@ class Bot implements IBot {
 
     public String processInput(String userInput, int sessionId) {
         Session session = sessions.get(sessionId);
+        if (session == null){
+            sessions.put(sessionId, new Session());
+        }
         String command = getCommand(userInput);
         String argument = getArgument(userInput);
 
@@ -39,7 +42,7 @@ class Bot implements IBot {
             return tryIdentifyUser(argument, session);
         }
         if (session.user == null) {
-            return "Need log in. Enter '/log_in' and your login or /create and new login";
+            return "Need log in. Enter '/login' and your login or /create and new login";
         }
         if (session.playing) {
             String quizBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
@@ -63,7 +66,7 @@ class Bot implements IBot {
                 return help;
             case "/create":
                 return processCommandCreate(argument, session);
-            case "/log_in":
+            case "/login":
                 return processCommandLogin(argument, session);
             case "/score":
                 return processCommandScore(argument, session);
