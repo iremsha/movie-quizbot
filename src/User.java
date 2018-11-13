@@ -2,20 +2,21 @@ import java.util.HashSet;
 
 public class User {
     public String Login;
-    int passwordHash;
+    public int passwordHash;
 
     public HashSet<String> Known = new HashSet<String >();
 
     public HashSet<User> Friends = new HashSet<>();
     public HashSet<String> FriendsLogins;
 
-    public int Score;
+//    private int score;
     public int getScore(){
-        return Known.size();
+        return this.Known.size();
     }
 
     User(String login, String password){
         this.Login = login;
         this.passwordHash = password.hashCode();
     }
+    User(){}
 }

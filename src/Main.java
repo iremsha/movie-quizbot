@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class Main {
 
     public static void main(String[] args){
@@ -12,5 +14,10 @@ public class Main {
 //        } catch (TelegramApiRequestException e) {
 //            e.printStackTrace();
 //        }
+    }
+    public static void main0(String[] args) throws IOException {
+        DataSaver.save("l", new User("n", "a"));
+        System.out.println(DataSaver.getData("h"));
+
     }
 }

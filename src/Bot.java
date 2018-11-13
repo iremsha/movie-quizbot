@@ -27,7 +27,7 @@ class Bot implements IBot {
         return instruction;
     }
 
-    public String processInput(String userInput, int sessionId) { // исправить получение команды и аргумента
+    public String processInput(String userInput, int sessionId) {
         Session session = sessions.get(sessionId);
         String command = getCommand(userInput);
         String argument = getArgument(userInput);
@@ -42,10 +42,10 @@ class Bot implements IBot {
             return "Need log in. Enter '/log_in' and your login or /create and new login";
         }
         if (session.playing) {
-            String quisBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
+            String quizBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
             String nextQuestion = quizBot.getQuestionToOffer(session.user);
             session.lastOfferedQuestion = nextQuestion;
-            return quisBotAnswer + "\n" + nextQuestion;
+            return quizBotAnswer + "\n" + nextQuestion;
         }
         if (isCommand(command)) {
             return processCommand(command, argument, sessionId);
@@ -92,10 +92,10 @@ class Bot implements IBot {
         }
     }
 
-    private String processCommandScore(String argument, Session session) {
-        String login = argument;
+    private String processCommandScore(String login, Session session) {
         if (login.equals("") || login.equals(session.user.Login)){
-            return Integer.toString(session.user.Score);
+//            return Integer.toString(session.user.score);
+            return String.valueOf(session.user.getScore());
         }
         if (!userManager.isUserInDB(login)){
             return "No user with this login";
@@ -103,18 +103,17 @@ class Bot implements IBot {
         if (!hasUserPermission(userManager, session.user.Login, login)){
             return "Permission denied";
         }
-        return String.valueOf(userManager.getUser(login).Score);
+        return String.valueOf(userManager.getUser(login).getScore());
     }
 
     private String processCommandCreate(String login, Session session) {
         if (login.isEmpty()){
             return "Empty login";
         }
-        session.user = null; //????
+//        session.user = null;
         if (userManager.isUserInDB(login)){
             return "This login has already taken";
         }
-//                session.user = userManager.createUser(argument);
         session.enteredLogin = login;
         session.askForPassword = true;
         return "Enter password";
