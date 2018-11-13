@@ -29,6 +29,11 @@ class Bot implements IBot {
 
     public String processInput(String userInput, int sessionId) {
         Session session = sessions.get(sessionId);
+        System.out.println(sessions.size());
+        if (session == null){
+            System.out.println(sessionId);
+            sessions.put(sessionId, new Session());
+        }
         String command = getCommand(userInput);
         String argument = getArgument(userInput);
 
