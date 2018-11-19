@@ -6,10 +6,11 @@ public class User {
 
     public HashSet<String> Known = new HashSet<String >();
 
-    public HashSet<User> Friends = new HashSet<>();
-    public HashSet<String> FriendsLogins;
+    public HashSet<String> Friends = new HashSet<>();
+//    public HashSet<User> Friends = new HashSet<>();
+//    public HashSet<String> FriendsLogins;
 
-//    private int score;
+    private int score;
     public int getScore(){
         return this.Known.size();
     }

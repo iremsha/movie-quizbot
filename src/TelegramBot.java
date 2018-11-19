@@ -12,11 +12,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 public class TelegramBot extends TelegramLongPollingBot {
 
-    private HashMap<Long, User> hash_chat_id = new HashMap<>();
+//    private HashMap<Long, User> hash_chat_id = new HashMap<>();
 
     private HashMap<String, String> data = new HashMap<>() {{
         put("Pulp Fiction", "Tarantino");
@@ -36,7 +35,10 @@ public class TelegramBot extends TelegramLongPollingBot {
     private UserManager userManager = new UserManager();
     private Bot bot = new Bot(quizBot, userManager);
 
-    private int sessionId = new Random().nextInt();
+    public TelegramBot() throws IOException {
+    }
+
+//    private int sessionId = new Random().nextInt();
 
 
     public static void main(String[] args) {
@@ -46,6 +48,9 @@ public class TelegramBot extends TelegramLongPollingBot {
         try {
             telegramBotsApi.registerBot(new TelegramBot());
         } catch (TelegramApiException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("IOException");
             e.printStackTrace();
         }
     }
@@ -57,7 +62,12 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         if (update.getMessage() != null && update.getMessage().hasText()) {
 //            String output_msg = this.bot.processInput(input_msg, sessionId);
-            String output_msg = this.bot.processInput(input_msg, chat_id.intValue());
+            String output_msg = null;
+            try {
+                output_msg = this.bot.processInput(input_msg, chat_id.intValue());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             sendMsg(chat_id, output_msg);
 

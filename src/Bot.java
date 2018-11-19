@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -14,12 +15,16 @@ class Bot implements IBot {
             "/stop - stop game \n" +
             "/help - help?";
 
-    private UserManager userManager;
+    private IUserManager userManager;
     private HashMap<Integer, Session> sessions = new HashMap<>(); //why can't int
 
-    Bot(IQuizBot quizBot, UserManager userManager) {
+    Bot(IQuizBot quizBot, IUserManager userManager) {
         this.quizBot = quizBot;
         this.userManager = userManager;
+    }
+    Bot(IQuizBot quizBot) throws IOException {
+        this.quizBot = quizBot;
+        this.userManager = new UserManager();
     }
 
     public String getStartMessage(int sessionId) {
@@ -27,11 +32,9 @@ class Bot implements IBot {
         return instruction;
     }
 
-    public String processInput(String userInput, int sessionId) {
+    public String processInput(String userInput, int sessionId) throws IOException {
         Session session = sessions.get(sessionId);
-        System.out.println(sessions.size());
         if (session == null){
-            System.out.println(sessionId);
             sessions.put(sessionId, new Session());
         }
         String command = getCommand(userInput);
@@ -58,7 +61,7 @@ class Bot implements IBot {
         return "Unexpected input. Try '/help'";
     }
 
-    private String processCommand(String command, String argument, int sessionId) {
+    private String processCommand(String command, String argument, int sessionId) throws IOException {
         Session session = sessions.get(sessionId);
         session.askForPassword = false;
         switch (command) {
@@ -76,8 +79,8 @@ class Bot implements IBot {
                 return getString(session.user.Known);
             case "/friends":
 //                var r = from().where("name", eq("Arthur"))
-                return getLogins(session.user.Friends);
-            case "/add_friend":
+                return getString(session.user.Friends);
+            case "/add":
                 return processCommandAddFriend(argument, session);
             case "/play":
                 session.playing = true;
@@ -92,6 +95,9 @@ class Bot implements IBot {
             case "/exit":
                 session.user = null;
                 return "bye";
+            case "/save":
+                userManager.saveChanges();
+                return "done";
             default:
                 return "Incorrect command";
         }
@@ -105,8 +111,8 @@ class Bot implements IBot {
         if (!userManager.isUserInDB(login)){
             return "No user with this login";
         }
-        if (!hasUserPermission(userManager, session.user.Login, login)){
-            return "Permission denied";
+        if (!hasUserPermission(session.user.Login, login)){
+            return "You can see only your friends' score";
         }
         return String.valueOf(userManager.getUser(login).getScore());
     }
@@ -152,7 +158,7 @@ class Bot implements IBot {
         return "Done";
     }
 
-    private boolean hasUserPermission(UserManager userManager, String login, String anotherLogin) {
+    private boolean hasUserPermission(String login, String anotherLogin) {
         User user = userManager.getUser(login);
         User anotherUser = userManager.getUser(anotherLogin);
         return hasUserPermission(user, anotherUser);
@@ -168,7 +174,7 @@ class Bot implements IBot {
     }
 
     private boolean isPriorityCommand(String input) {
-        List<String> priorityCommands = Arrays.asList(new String[]{"/start", "/help", "/stop", "/create", "/log_in"});
+        List<String> priorityCommands = Arrays.asList(new String[]{"/start", "/help", "/stop", "/create", "/login", "/save"});
         return priorityCommands.contains(input); //проверить сравнение строк в данном случае
     }
     private String getString(Iterable<String> iterable) {
@@ -176,13 +182,6 @@ class Bot implements IBot {
         StringBuilder result = new StringBuilder();
         for (String element : iterable) {
             result.append(element + " ");
-        }
-        return result.toString();
-    }
-    private String getLogins(Iterable<User> iterable) {
-        StringBuilder result = new StringBuilder();
-        for (User element : iterable) {
-            result.append(element.Login + " ");
         }
         return result.toString();
     }
@@ -201,7 +200,7 @@ class Bot implements IBot {
         return input;
     }
 
-    private String tryIdentifyUser(String password, Session session){
+    private String tryIdentifyUser(String password, Session session) throws IOException {
         String login = session.enteredLogin;
         if (userManager.isUserInDB(login)){
             if (userManager.isCorrectPassword(login, password)){

@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
@@ -10,10 +11,11 @@ class ConsoleGame {
         put("Blue Velvet", "Lynch");
     }};
 
-    void startGame(){
-        QuizBot quizBot = new QuizBot(data);
+    public static void main(String[] args) throws IOException {
+        ConsoleGame game = new ConsoleGame();
+        QuizBot quizBot = new QuizBot(game.data);
         UserManager userManager = new UserManager();
-        Bot bot = new Bot(quizBot, userManager);
+        Bot bot = new Bot(quizBot);
 
         Scanner scan = new Scanner(System.in);
         int sessionId = new Random().nextInt();
