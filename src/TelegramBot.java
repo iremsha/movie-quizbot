@@ -4,12 +4,16 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -62,18 +66,21 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         if (update.getMessage() != null && update.getMessage().hasText()) {
 //            String output_msg = this.bot.processInput(input_msg, sessionId);
-            String output_msg = null;
+            ArrayList<String> output_msg = null;
             try {
                 output_msg = this.bot.processInput(input_msg, chat_id.intValue());
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            sendMsg(chat_id, output_msg);
-
-            if (dataArt.containsKey(output_msg.split("\n")[1])) {
-                sendPht(chat_id, dataArt.get(output_msg.split("\n")[1]));
+            assert output_msg != null;
+            for (String message : output_msg) {
+                sendMsg(chat_id, message);
             }
+
+           if (output_msg.size() == 2) {
+               sendPht(chat_id, dataArt.get(output_msg.get(1)));
+           }
 
             //sendMsg(chat_id, nextBotMessage);
         }
@@ -84,6 +91,9 @@ public class TelegramBot extends TelegramLongPollingBot {
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(chatId);
         sendMessage.setText(s);
+
+        //setButtons(sendMessage);
+
         try {
             execute(sendMessage);
         } catch (TelegramApiException e) {
@@ -103,6 +113,25 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     }
 
+    public synchronized void setButtons(SendMessage sendMessage) {
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+        sendMessage.setReplyMarkup(replyKeyboardMarkup);
+        replyKeyboardMarkup.setSelective(true);
+        replyKeyboardMarkup.setResizeKeyboard(true);
+        replyKeyboardMarkup.setOneTimeKeyboard(true);
+        List<KeyboardRow> keyboard = new ArrayList<>();
+        KeyboardRow keyboardHelpRow = new KeyboardRow();
+
+        keyboardHelpRow.add(new KeyboardButton("/help"));
+
+        KeyboardRow keyboardStartRow = new KeyboardRow();
+        keyboardStartRow.add(new KeyboardButton("/start"));
+
+        keyboard.add(keyboardHelpRow);
+        keyboard.add(keyboardStartRow);
+
+        replyKeyboardMarkup.setKeyboard(keyboard);
+    }
     @Override
     public String getBotUsername() {
         return "OOP_chat_bot";

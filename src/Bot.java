@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -15,8 +16,10 @@ class Bot implements IBot {
             "/stop - stop game \n" +
             "/help - help?";
 
+    private ArrayList<String> listMsg = new ArrayList<String>();
+
     private IUserManager userManager;
-    private HashMap<Integer, Session> sessions = new HashMap<>(); //why can't int
+    public HashMap<Integer, Session> sessions = new HashMap<>(); //why can't int
 
     Bot(IQuizBot quizBot, IUserManager userManager) {
         this.quizBot = quizBot;
@@ -32,7 +35,8 @@ class Bot implements IBot {
         return instruction;
     }
 
-    public String processInput(String userInput, int sessionId) throws IOException {
+    public ArrayList<String> processInput(String userInput, int sessionId) throws IOException {
+        listMsg.clear();
         Session session = sessions.get(sessionId);
         if (session == null){
             sessions.put(sessionId, new Session());
@@ -41,24 +45,32 @@ class Bot implements IBot {
         String argument = getArgument(userInput);
 
         if (isPriorityCommand(command)) {
-            return processCommand(command, argument, sessionId);
+            listMsg.add(processCommand(command, argument, sessionId));
+            return listMsg;
         }
         if (session.askForPassword){
-            return tryIdentifyUser(argument, session);
+            listMsg.add(tryIdentifyUser(argument, session));
+            return listMsg;
         }
         if (session.user == null) {
-            return "Need log in. Enter '/login' and your login or /create and new login";
+            listMsg.add("Need log in. Enter '/login' and your login or /create and new login");
+            return listMsg;
         }
         if (session.playing) {
             String quizBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
             String nextQuestion = quizBot.getQuestionToOffer(session.user);
             session.lastOfferedQuestion = nextQuestion;
-            return quizBotAnswer + "\n" + nextQuestion;
+            //return quizBotAnswer + "\n" + nextQuestion;
+            listMsg.add(quizBotAnswer);
+            listMsg.add(nextQuestion);
+            return listMsg;
         }
         if (isCommand(command)) {
-            return processCommand(command, argument, sessionId);
+            listMsg.add(processCommand(command, argument, sessionId));
+            return listMsg;
         }
-        return "Unexpected input. Try '/help'";
+        listMsg.add("Unexpected input. Try '/help'");
+        return listMsg;
     }
 
     private String processCommand(String command, String argument, int sessionId) throws IOException {
