@@ -34,7 +34,7 @@ class Bot implements IBot {
     }
 
 
-    public List<String> processInput(String userInput, int sessionId) throws IOException {
+    public List<String> processInput(String userInput, int sessionId) throws IOException{
         List<String> listMsg = new ArrayList<>();
         Session session = sessions.get(sessionId);
         if (session == null) {
@@ -45,26 +45,23 @@ class Bot implements IBot {
 
         if (isCommand(command)) {
             listMsg.add(processCommand(command, argument, sessionId));
-        }
-        else if (session.askForPassword) {
+        } else if (session.askForPassword) {
             listMsg.add(tryIdentifyUser(argument, session));
-        }
-        else if (session.user == null) {
+        } else if (session.user == null) {
             listMsg.add("Need log in. Enter '/login' and your login or /create and new login");
-        }
-        else if (session.playing) {
+        } else if (session.playing) {
             String quizBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
             String nextQuestion = quizBot.getQuestionToOffer(session.user);
             session.lastOfferedQuestion = nextQuestion;
             listMsg.add(quizBotAnswer);
             listMsg.add(nextQuestion);
+        } else {
+            listMsg.add("Unexpected input. Try '/help'");
         }
-
-        else {listMsg.add("Unexpected input. Try '/help'");}
         return listMsg;
     }
 
-    private String processCommand(String command, String argument, int sessionId) throws IOException {
+    private String processCommand(String command, String argument, int sessionId) throws IOException{
         Session session = sessions.get(sessionId);
         session.askForPassword = false;
         switch (command) {
@@ -80,12 +77,12 @@ class Bot implements IBot {
                 session.toButtonsCommands.clear();
                 return processCommandLogin(argument, session);
             case "/score":
-                return processCommandScore(argument, session);
+                return processCommandGetInfo(UserInfo.Score, argument, session);
             case "/movies": //later add watch friends' movies
-                return processCommandMovies(argument, session);
+                return processCommandGetInfo(UserInfo.Movies, argument, session);
             case "/friends":
 //                var r = from().where("name", eq("Arthur"))
-                return processCommandFriends(argument, session);
+                return processCommandGetInfo(UserInfo.Friends, argument, session);
             case "/add":
                 return processCommandAddFriend(argument, session);
             case "/play":
@@ -109,6 +106,20 @@ class Bot implements IBot {
                 return "Incorrect command";
         }
     }
+
+    private String processCommandGetInfo(UserInfo info, String login, Session session) {
+        if (login.equals("") || login.equals(session.user.Login)) {
+            return UserInfoGetter.get(info, session.user);
+        }
+        if (!userManager.isUserInDB(login)) {
+            return "No user with this login";
+        }
+        if (!hasUserPermission(session.user.Login, login)) {
+            return "You can see only your friends' information";
+        }
+        return UserInfoGetter.get(info, userManager.getUser(login));
+    }
+
     private String processCommandFriends(String login, Session session) {
         if (login.equals("") || login.equals(session.user.Login)) {
             return session.user.Friends.toString();

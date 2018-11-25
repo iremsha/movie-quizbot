@@ -3,6 +3,6 @@ import java.util.List;
 
 public interface IBot {
 
-    List<String> processInput(String userInput, int sessionId) throws IOException;
+    List<String> processInput(String userInput, int sessionId) throws IOException, NoSuchFieldException, IllegalAccessException;
 
 }

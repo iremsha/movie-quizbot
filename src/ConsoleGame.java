@@ -1,6 +1,6 @@
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ class ConsoleGame {
     ConsoleGame() throws IOException {
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NoSuchFieldException, IllegalAccessException {
         ConsoleGame game = new ConsoleGame();
         QuizBot quizBot = new QuizBot(game.data);
         UserManager userManager = UserManager.getInstance();
@@ -27,7 +27,7 @@ class ConsoleGame {
         System.out.println(bot.processInput("/start", sessionId));
         while (true){
             String userInput = scan.nextLine();
-            ArrayList<String> botAnswer = bot.processInput(userInput, sessionId);
+            List<String> botAnswer = bot.processInput(userInput, sessionId);
             System.out.println(botAnswer);
         }
      }
