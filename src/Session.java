@@ -5,4 +5,5 @@ public class Session {
     String lastOfferedQuestion;
     String enteredLogin;
     boolean askForPassword;
+    //List<Command> availableCommands;
 }

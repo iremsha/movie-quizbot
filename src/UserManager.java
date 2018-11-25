@@ -1,13 +1,19 @@
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class UserManager implements IUserManager {
-    private HashMap<String, User> dataBase;
-    private HashSet<String> changed;
+    private ConcurrentHashMap<String, User> dataBase;
+    //private HashSet<String> changed;
+    private static UserManager instance;
 
-    public UserManager() throws IOException {
-        dataBase = UsersSaver.getAllUsers();
+    private UserManager() throws IOException {
+        dataBase = new ConcurrentHashMap<>(UsersSaver.getAllUsers());
+    }
+    public static UserManager getInstance() throws IOException {
+        if (instance == null){
+            instance = new UserManager();
+        }
+        return instance;
     }
 
     public boolean isUserInDB(String userLogin){
@@ -37,11 +43,26 @@ public class UserManager implements IUserManager {
     public boolean areFriends(User user1, User user2){
         return user1.Friends.contains(user2.Login) && user2.Friends.contains(user1.Login);
     }
+    public boolean areFriends(String userLogin1, String userLogin2){
+        var user1 = getUser(userLogin1);
+        var user2 = getUser(userLogin2);
+        return user1.Friends.contains(user2.Login) && user2.Friends.contains(user1.Login);
+    }
 
     public void saveChanges() throws IOException {
         for(String userLogin:dataBase.keySet()){
             UsersSaver.saveUser(dataBase.get(userLogin));
         }
+    }
+
+    public boolean hasUserPermission(String login, String anotherLogin) {
+        User user = getUser(login);
+        User anotherUser = getUser(anotherLogin);
+        return hasUserPermission(user, anotherUser);
+    }
+
+    public boolean hasUserPermission(User user, User anotherUser) {
+        return areFriends(user, anotherUser);
     }
 
 

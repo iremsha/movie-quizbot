@@ -8,5 +8,8 @@ public interface IUserManager {
     User getUser(String userName);
     void addFriendToUser(String userLogin, String friendLogin);
     boolean areFriends(User user1, User user2);
+    boolean areFriends(String user1, String user2);
     void saveChanges() throws IOException;
+    boolean hasUserPermission(User user, User anotherUser);
+    boolean hasUserPermission(String user, String anotherUser);
 }

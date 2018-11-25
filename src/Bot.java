@@ -16,29 +16,28 @@ class Bot implements IBot {
             "/stop - stop game \n" +
             "/help - help?";
 
-    private ArrayList<String> listMsg = new ArrayList<String>();
-
     private IUserManager userManager;
     public HashMap<Integer, Session> sessions = new HashMap<>(); //why can't int
+    public static Bot instance;
 
-    Bot(IQuizBot quizBot, IUserManager userManager) {
+    private Bot(IQuizBot quizBot, IUserManager userManager) {
         this.quizBot = quizBot;
         this.userManager = userManager;
     }
-    Bot(IQuizBot quizBot) throws IOException {
-        this.quizBot = quizBot;
-        this.userManager = new UserManager();
+
+    public static Bot getInstance(IQuizBot quizBot, IUserManager userManager) {
+        if (instance == null) {
+            instance = new Bot(quizBot, userManager);
+        }
+        return instance;
+
     }
 
-    public String getStartMessage(int sessionId) {
-        sessions.put(sessionId, new Session());
-        return instruction;
-    }
 
     public ArrayList<String> processInput(String userInput, int sessionId) throws IOException {
-        listMsg.clear();
+        ArrayList<String> listMsg = new ArrayList<>();
         Session session = sessions.get(sessionId);
-        if (session == null){
+        if (session == null) {
             sessions.put(sessionId, new Session());
         }
         String command = getCommand(userInput);
@@ -48,7 +47,7 @@ class Bot implements IBot {
             listMsg.add(processCommand(command, argument, sessionId));
             return listMsg;
         }
-        if (session.askForPassword){
+        if (session.askForPassword) {
             listMsg.add(tryIdentifyUser(argument, session));
             return listMsg;
         }
@@ -88,7 +87,7 @@ class Bot implements IBot {
             case "/score":
                 return processCommandScore(argument, session);
             case "/movies": //later add watch friends' movies
-                return getString(session.user.Known);
+                return processCommandMovies(argument, session);
             case "/friends":
 //                var r = from().where("name", eq("Arthur"))
                 return getString(session.user.Friends);
@@ -114,47 +113,71 @@ class Bot implements IBot {
                 return "Incorrect command";
         }
     }
-
-    private String processCommandScore(String login, Session session) {
-        if (login.equals("") || login.equals(session.user.Login)){
-//            return Integer.toString(session.user.score);
-            return String.valueOf(session.user.getScore());
+    private String processCommandFriends(String login, Session session) {
+        if (login.equals("") || login.equals(session.user.Login)) {
+            return session.user.Friends.toString();
         }
-        if (!userManager.isUserInDB(login)){
+        if (!userManager.isUserInDB(login)) {
             return "No user with this login";
         }
-        if (!hasUserPermission(session.user.Login, login)){
-            return "You can see only your friends' score";
+        if (!hasUserPermission(session.user.Login, login)) {
+            return "You can see only your friends' information";
+        }
+        return userManager.getUser(login).Friends.toString();
+    }
+
+    private String processCommandMovies(String login, Session session) {
+        if (login.equals("") || login.equals(session.user.Login)) {
+            return session.user.Known.toString();
+        }
+        if (!userManager.isUserInDB(login)) {
+            return "No user with this login";
+        }
+        if (!hasUserPermission(session.user.Login, login)) {
+            return "You can see only your friends' information";
+        }
+        return userManager.getUser(login).Known.toString();
+    }
+
+    private String processCommandScore(String login, Session session) {
+        if (login.equals("") || login.equals(session.user.Login)) {
+            return String.valueOf(session.user.getScore());
+        }
+        if (!userManager.isUserInDB(login)) {
+            return "No user with this login";
+        }
+        if (!hasUserPermission(session.user.Login, login)) {
+            return "You can see only your friends' information";
         }
         return String.valueOf(userManager.getUser(login).getScore());
     }
 
     private String processCommandCreate(String login, Session session) {
-        if (login.isEmpty()){
+        if (login.isEmpty()) {
             return "Empty login";
         }
 //        session.user = null;
-        if (userManager.isUserInDB(login)){
+        if (userManager.isUserInDB(login)) {
             return "This login has already taken";
         }
         session.enteredLogin = login;
         session.askForPassword = true;
         return "Enter password";
     }
+
     private String processCommandLogin(String login, Session session) {
-        if (login.isEmpty()){
+        if (login.isEmpty()) {
             return "Empty login";
         }
         session.user = null;
         if (!userManager.isUserInDB(login)) {
             return "No users with this login. Try again";
         }
-//                session.user = userManager.getUser(argument);
         session.enteredLogin = login;
         session.askForPassword = true;
-        return "Enter password"; // should be in spec method
-//                return "you've log in as " + session.user.Login;
-   }
+        return "Enter password";
+    }
+
     private String processCommandAddFriend(String argument, Session session) {
         String login = argument;
         if (login.equals("")) {
@@ -165,6 +188,9 @@ class Bot implements IBot {
         }
         if (!userManager.isUserInDB(login)) {
             return "No user with this login";
+        }
+        if (userManager.areFriends(session.user.Login, login)) {
+            return "You've already added this user";
         }
         userManager.addFriendToUser(session.user.Login, login);
         return "Done";
@@ -189,6 +215,7 @@ class Bot implements IBot {
         List<String> priorityCommands = Arrays.asList(new String[]{"/start", "/help", "/stop", "/create", "/login", "/save"});
         return priorityCommands.contains(input); //проверить сравнение строк в данном случае
     }
+
     private String getString(Iterable<String> iterable) {
         // how to ??
         StringBuilder result = new StringBuilder();
@@ -199,11 +226,12 @@ class Bot implements IBot {
     }
 
     private String getCommand(String input) {
-        if (input.startsWith("/")){
+        if (input.startsWith("/")) {
             return input.split("\\s", 2)[0];
         }
         return "";
     }
+
     private String getArgument(String input) {
         if (input.startsWith("/")) {
             String[] arrInput = input.split("\\s", 2);
@@ -214,8 +242,8 @@ class Bot implements IBot {
 
     private String tryIdentifyUser(String password, Session session) throws IOException {
         String login = session.enteredLogin;
-        if (userManager.isUserInDB(login)){
-            if (userManager.isCorrectPassword(login, password)){
+        if (userManager.isUserInDB(login)) {
+            if (userManager.isCorrectPassword(login, password)) {
                 session.askForPassword = false;
                 session.user = userManager.getUser(session.enteredLogin);
                 return "You log in as " + login;

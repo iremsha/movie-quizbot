@@ -1,8 +1,8 @@
 import java.io.IOException;
+import java.util.List;
 
 public interface IBot {
 
-    String getStartMessage(int sessionId);
-    String processInput(String userInput, int sessionId) throws IOException;
+    List<String> processInput(String userInput, int sessionId) throws IOException;
 
 }

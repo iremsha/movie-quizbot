@@ -21,11 +21,12 @@ public class TelegramBot extends TelegramLongPollingBot {
 
 //    private HashMap<Long, User> hash_chat_id = new HashMap<>();
 
-    private HashMap<String, String> data = new HashMap<>() {{
-        put("Pulp Fiction", "Tarantino");
-        put("A Clockwork Orange", "Kubrick");
-        put("Blue Velvet", "Lynch");
-    }};
+//    private HashMap<String, String> data = new HashMap<>() {{
+//        put("Pulp Fiction", "Tarantino");
+//        put("A Clockwork Orange", "Kubrick");
+//        put("Blue Velvet", "Lynch");
+//    }};
+    private HashMap<String, String> data = new MoviesGetter().getData();
 
     private HashMap<String, String> dataArt = new HashMap<>() {{
         put("Pulp Fiction", "https://cms-assets.theasc.com/Pulp-Featured.jpg?mtime=20170115195049");
@@ -36,14 +37,11 @@ public class TelegramBot extends TelegramLongPollingBot {
 
 
     private QuizBot quizBot = new QuizBot(data);
-    private UserManager userManager = new UserManager();
-    private Bot bot = new Bot(quizBot, userManager);
+    private UserManager userManager = UserManager.getInstance();
+    private Bot bot = Bot.getInstance(quizBot, userManager);
 
     public TelegramBot() throws IOException {
     }
-
-//    private int sessionId = new Random().nextInt();
-
 
     public static void main(String[] args) {
         ApiContextInitializer.init();

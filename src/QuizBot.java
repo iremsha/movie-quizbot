@@ -19,24 +19,25 @@ class QuizBot implements IQuizBot {
     public String analyzeUserAnswer(String question, String userAnswer, User user){
 
         String correctAnswer = questionAndAnswer.get(question);
+        userAnswer = userAnswer.trim();
 
-        if (userAnswer.equalsIgnoreCase(correctAnswer)){
+        if (userAnswer.equalsIgnoreCase(correctAnswer) || userAnswer.equalsIgnoreCase(correctAnswer.split(" ")[1])){
             praiseUser(user, question);
             return goodJobMessage;
         }
 
         noticeUserFail(user, question);
-        return badJobMessage;
+        return badJobMessage + ". Right answer is " + correctAnswer;
     }
 
     public String getQuestionToOffer(User user){
-        if (user.Known.size() == questionAndAnswer.size())
-            return "You know all our movies";
-        String question = getRandomQuestion();
-        while (user.Known.contains((question))){
-            question = getRandomQuestion();
+        var questions = questionAndAnswer.keySet().toArray();
+        int i = 0;
+        while (i<questions.length && user.Known.contains(questions[i])){
+            i++;
         }
-        return question;
+        if (i == questions.length) return "You know all our movies";
+        return questions[i].toString();
     }
 
     private void praiseUser(User user, String question){
@@ -58,6 +59,7 @@ class QuizBot implements IQuizBot {
         int rndNumber = rnd.nextInt(questionAndAnswer.size());
         return questionAndAnswer.keySet().toArray()[rndNumber].toString();
     }
+
 
     public String getInstruction() {
         return "Let's play!\n" +
