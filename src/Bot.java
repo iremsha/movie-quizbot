@@ -34,8 +34,8 @@ class Bot implements IBot {
     }
 
 
-    public ArrayList<String> processInput(String userInput, int sessionId) throws IOException {
-        ArrayList<String> listMsg = new ArrayList<>();
+    public List<String> processInput(String userInput, int sessionId) throws IOException {
+        List<String> listMsg = new ArrayList<>();
         Session session = sessions.get(sessionId);
         if (session == null) {
             sessions.put(sessionId, new Session());
@@ -43,32 +43,24 @@ class Bot implements IBot {
         String command = getCommand(userInput);
         String argument = getArgument(userInput);
 
-        if (isPriorityCommand(command)) {
+        if (isCommand(command)) {
             listMsg.add(processCommand(command, argument, sessionId));
-            return listMsg;
         }
-        if (session.askForPassword) {
+        else if (session.askForPassword) {
             listMsg.add(tryIdentifyUser(argument, session));
-            return listMsg;
         }
-        if (session.user == null) {
+        else if (session.user == null) {
             listMsg.add("Need log in. Enter '/login' and your login or /create and new login");
-            return listMsg;
         }
-        if (session.playing) {
+        else if (session.playing) {
             String quizBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
             String nextQuestion = quizBot.getQuestionToOffer(session.user);
             session.lastOfferedQuestion = nextQuestion;
-            //return quizBotAnswer + "\n" + nextQuestion;
             listMsg.add(quizBotAnswer);
             listMsg.add(nextQuestion);
-            return listMsg;
         }
-        if (isCommand(command)) {
-            listMsg.add(processCommand(command, argument, sessionId));
-            return listMsg;
-        }
-        listMsg.add("Unexpected input. Try '/help'");
+
+        else {listMsg.add("Unexpected input. Try '/help'");}
         return listMsg;
     }
 
@@ -77,12 +69,15 @@ class Bot implements IBot {
         session.askForPassword = false;
         switch (command) {
             case "/start":
+                session.toButtonsCommands = new ArrayList<>(Arrays.asList("login", "create"));
                 return instruction;
             case "/help":
                 return help;
             case "/create":
+                session.toButtonsCommands.clear();
                 return processCommandCreate(argument, session);
             case "/login":
+                session.toButtonsCommands.clear();
                 return processCommandLogin(argument, session);
             case "/score":
                 return processCommandScore(argument, session);
@@ -90,10 +85,11 @@ class Bot implements IBot {
                 return processCommandMovies(argument, session);
             case "/friends":
 //                var r = from().where("name", eq("Arthur"))
-                return getString(session.user.Friends);
+                return processCommandFriends(argument, session);
             case "/add":
                 return processCommandAddFriend(argument, session);
             case "/play":
+                session.toButtonsCommands = new ArrayList<>(Arrays.asList("stop", "score"));
                 session.playing = true;
                 String firstQuestion = quizBot.getQuestionToOffer(session.user);
                 session.lastOfferedQuestion = firstQuestion;

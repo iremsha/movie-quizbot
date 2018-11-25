@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Session {
     int Id;
     User user;
@@ -5,5 +7,6 @@ public class Session {
     String lastOfferedQuestion;
     String enteredLogin;
     boolean askForPassword;
-    //List<Command> availableCommands;
+    List<String> availableCommands;
+    List<String> toButtonsCommands;
 }
