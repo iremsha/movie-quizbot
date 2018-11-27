@@ -1,9 +1,12 @@
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 class Bot implements IBot {
 
-    private final String instruction = "If you've already played enter '/login' and your login\n" +
+    public final String instruction = "If you've already played enter '/login' and your login\n" +
             "Else enter '/create' and your login\n" +
             "If you want some more information enter '/help\n";
 
@@ -13,20 +16,10 @@ class Bot implements IBot {
             "/stop - stop game \n" +
             "/help - help?";
 
-    private final String needLogin = "Need log in. Enter '/login' and your login or /create and new login";
-    private final String unexpectedInput = "Unexpected input. Try '/help'";
-    private final String incorrectCommand = "Incorrect command";
-    private final String incorrectPassword = "Incorrect password. Try again";
-    private final String noUserWithThisLogin = "No user with this login";
-    private final String enterPassword = "Enter password";
-    private final String emptyLogin = "Empty login";
-    private final String youLogInAs  = "You log in as ";
-    private final String profileHasCreated = "Profile has created. You log in as ";
-
 
 
     private IUserManager userManager;
-    public HashMap<Integer, Session> sessions = new HashMap<>(); //why can't int
+    public ConcurrentHashMap<Integer, Session> sessions = new ConcurrentHashMap<>();
     public static Bot instance;
 
     private Bot(IQuizBot quizBot, IUserManager userManager) {
@@ -39,7 +32,6 @@ class Bot implements IBot {
             instance = new Bot(quizBot, userManager);
         }
         return instance;
-
     }
 
 
@@ -48,6 +40,7 @@ class Bot implements IBot {
         Session session = sessions.get(sessionId);
         if (session == null) {
             sessions.put(sessionId, new Session());
+            session = sessions.get(sessionId);
         }
         String command = getCommand(userInput);
         String argument = getArgument(userInput);
@@ -87,10 +80,9 @@ class Bot implements IBot {
                 return processCommandLogin(argument, session);
             case "/score":
                 return processCommandGetInfo(UserInfo.Score, argument, session);
-            case "/movies": //later add watch friends' movies
+            case "/movies":
                 return processCommandGetInfo(UserInfo.Movies, argument, session);
             case "/friends":
-//                var r = from().where("name", eq("Arthur"))
                 return processCommandGetInfo(UserInfo.Friends, argument, session);
             case "/add":
                 return processCommandAddFriend(argument, session);
@@ -267,6 +259,7 @@ class Bot implements IBot {
             return incorrectPassword;
         }
         session.askForPassword = false;
+
         session.user = userManager.createUser(login, password);
         return profileHasCreated; // + session.user.Login; - пока что так, для кнопок
     }

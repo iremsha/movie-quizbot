@@ -19,21 +19,7 @@ import java.util.List;
 
 public class TelegramBot extends TelegramLongPollingBot {
 
-//    private HashMap<Long, User> hash_chat_id = new HashMap<>();
-
-//    private HashMap<String, String> data = new HashMap<>() {{
-//        put("Pulp Fiction", "Tarantino");
-//        put("A Clockwork Orange", "Kubrick");
-//        put("Blue Velvet", "Lynch");
-//    }};
     private HashMap<String, String> data = new MoviesGetter().getData();
-
-    private HashMap<String, String> dataArt = new HashMap<>() {{
-        put("Pulp Fiction", "https://cms-assets.theasc.com/Pulp-Featured.jpg?mtime=20170115195049");
-        put("A Clockwork Orange", "http://www.modernism-in-metroland.co.uk/uploads/1/0/2/5/10257505/28-days-thames_orig.jpg");
-        put("Blue Velvet", "http://metrograph.com/uploads/films/8778124b4ac895f81682bbfbead14cd0-1515003257-726x388.jpg");
-    }};
-
 
 
     private QuizBot quizBot = new QuizBot(data);
@@ -76,9 +62,6 @@ public class TelegramBot extends TelegramLongPollingBot {
                 sendMsg(chat_id, message);
             }
 
-           if (output_msg.size() == 2) {
-               sendPht(chat_id, dataArt.get(output_msg.get(1)));
-           }
 
             //sendMsg(chat_id, nextBotMessage);
         }
@@ -99,7 +82,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    private synchronized void sendPht(long chatId, String p) {
+    private void sendPht(long chatId, String p) {
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setChatId(chatId);
         sendPhoto.setPhoto(p);
@@ -111,7 +94,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     }
 
-    private synchronized void setButtons(SendMessage sendMessage) {
+    private void setButtons(SendMessage sendMessage) {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         replyKeyboardMarkup.setSelective(true);

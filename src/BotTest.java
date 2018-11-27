@@ -69,7 +69,6 @@ public class BotTest {
 
     @Test
     public void J() {
-
         assertEquals("Need login after command",bot.processCommandAddFriend("", new Session()));
     }
 }
