@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class UsersSaver {
 
-//    private static String path = "users.json";
+    //    private static String path = "users.json";
     private static String folderPath = "users";
 
     public static void saveUser(User user) throws IOException {

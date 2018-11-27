@@ -84,13 +84,13 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    private void sendMsg(long chatId, String s) {
+    private synchronized void sendMsg(long chatId, String s) {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdown(true);
         sendMessage.setChatId(chatId);
         sendMessage.setText(s);
 
-        //setButtons(sendMessage);
+        setButtons(sendMessage);
 
         try {
             execute(sendMessage);
@@ -99,7 +99,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         }
     }
 
-    private void sendPht(long chatId, String p) {
+    private synchronized void sendPht(long chatId, String p) {
         SendPhoto sendPhoto = new SendPhoto();
         sendPhoto.setChatId(chatId);
         sendPhoto.setPhoto(p);
@@ -111,22 +111,25 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     }
 
-    public synchronized void setButtons(SendMessage sendMessage) {
+    private synchronized void setButtons(SendMessage sendMessage) {
         ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
         sendMessage.setReplyMarkup(replyKeyboardMarkup);
         replyKeyboardMarkup.setSelective(true);
         replyKeyboardMarkup.setResizeKeyboard(true);
-        replyKeyboardMarkup.setOneTimeKeyboard(true);
         List<KeyboardRow> keyboard = new ArrayList<>();
-        KeyboardRow keyboardHelpRow = new KeyboardRow();
 
-        keyboardHelpRow.add(new KeyboardButton("/help"));
+         for (String textButtons : bot.createButtons(sendMessage.getText())){
+            KeyboardRow keyboardOneRow = new KeyboardRow();
+            keyboardOneRow.add(new KeyboardButton(textButtons));
+            keyboard.add(keyboardOneRow);
 
-        KeyboardRow keyboardStartRow = new KeyboardRow();
-        keyboardStartRow.add(new KeyboardButton("/start"));
+        }
 
-        keyboard.add(keyboardHelpRow);
-        keyboard.add(keyboardStartRow);
+        /*KeyboardRow keyboardOneRow = new KeyboardRow(); --Кнопки в строчку
+        for (String textButtons : bot.createButtons(sendMessage.getText())){
+            keyboardOneRow.add(new KeyboardButton(textButtons));
+        }
+        keyboard.add(keyboardOneRow);*/
 
         replyKeyboardMarkup.setKeyboard(keyboard);
     }

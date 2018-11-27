@@ -1,20 +1,29 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 class Bot implements IBot {
 
-    private String instruction = "If you've already played enter '/login' and your login\n" +
+    private final String instruction = "If you've already played enter '/login' and your login\n" +
             "Else enter '/create' and your login\n" +
             "If you want some more information enter '/help\n";
 
     private IQuizBot quizBot;
-    private String help = "/start - start game \n" + //дописать команды
+    private final String help = "/start - start game \n" + //дописать команды
             "/score - show current score \n" +
             "/stop - stop game \n" +
             "/help - help?";
+
+    private final String needLogin = "Need log in. Enter '/login' and your login or /create and new login";
+    private final String unexpectedInput = "Unexpected input. Try '/help'";
+    private final String incorrectCommand = "Incorrect command";
+    private final String incorrectPassword = "Incorrect password. Try again";
+    private final String noUserWithThisLogin = "No user with this login";
+    private final String enterPassword = "Enter password";
+    private final String emptyLogin = "Empty login";
+    private final String youLogInAs  = "You log in as ";
+    private final String profileHasCreated = "Profile has created. You log in as ";
+
+
 
     private IUserManager userManager;
     public HashMap<Integer, Session> sessions = new HashMap<>(); //why can't int
@@ -48,7 +57,7 @@ class Bot implements IBot {
         } else if (session.askForPassword) {
             listMsg.add(tryIdentifyUser(argument, session));
         } else if (session.user == null) {
-            listMsg.add("Need log in. Enter '/login' and your login or /create and new login");
+            listMsg.add(needLogin);
         } else if (session.playing) {
             String quizBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
             String nextQuestion = quizBot.getQuestionToOffer(session.user);
@@ -56,12 +65,12 @@ class Bot implements IBot {
             listMsg.add(quizBotAnswer);
             listMsg.add(nextQuestion);
         } else {
-            listMsg.add("Unexpected input. Try '/help'");
+            listMsg.add(unexpectedInput);
         }
         return listMsg;
     }
 
-    private String processCommand(String command, String argument, int sessionId) throws IOException{
+    public String processCommand(String command, String argument, int sessionId) throws IOException{
         Session session = sessions.get(sessionId);
         session.askForPassword = false;
         switch (command) {
@@ -103,7 +112,7 @@ class Bot implements IBot {
                 userManager.saveChanges();
                 return "done";
             default:
-                return "Incorrect command";
+                return incorrectCommand;
         }
     }
 
@@ -112,7 +121,7 @@ class Bot implements IBot {
             return UserInfoGetter.get(info, session.user);
         }
         if (!userManager.isUserInDB(login)) {
-            return "No user with this login";
+            return noUserWithThisLogin;
         }
         if (!hasUserPermission(session.user.Login, login)) {
             return "You can see only your friends' information";
@@ -151,7 +160,7 @@ class Bot implements IBot {
             return String.valueOf(session.user.getScore());
         }
         if (!userManager.isUserInDB(login)) {
-            return "No user with this login";
+            return noUserWithThisLogin;
         }
         if (!hasUserPermission(session.user.Login, login)) {
             return "You can see only your friends' information";
@@ -172,20 +181,20 @@ class Bot implements IBot {
         return "Enter password";
     }
 
-    private String processCommandLogin(String login, Session session) {
+    public String processCommandLogin(String login, Session session) {
         if (login.isEmpty()) {
-            return "Empty login";
+            return emptyLogin;
         }
         session.user = null;
         if (!userManager.isUserInDB(login)) {
-            return "No users with this login. Try again";
+            return noUserWithThisLogin;
         }
         session.enteredLogin = login;
         session.askForPassword = true;
-        return "Enter password";
+        return enterPassword;
     }
 
-    private String processCommandAddFriend(String argument, Session session) {
+    public String processCommandAddFriend(String argument, Session session) {
         String login = argument;
         if (login.equals("")) {
             return "Need login after command";
@@ -194,7 +203,7 @@ class Bot implements IBot {
             return "You can't add yourself";
         }
         if (!userManager.isUserInDB(login)) {
-            return "No user with this login";
+            return noUserWithThisLogin;
         }
         if (userManager.areFriends(session.user.Login, login)) {
             return "You've already added this user";
@@ -253,12 +262,57 @@ class Bot implements IBot {
             if (userManager.isCorrectPassword(login, password)) {
                 session.askForPassword = false;
                 session.user = userManager.getUser(session.enteredLogin);
-                return "You log in as " + login;
+                return youLogInAs + login;
             }
-            return "Incorrect password. Try again";
+            return incorrectPassword;
         }
         session.askForPassword = false;
         session.user = userManager.createUser(login, password);
-        return "Profile has created. You log in as " + session.user.Login;
+        return profileHasCreated; // + session.user.Login; - пока что так, для кнопок
+    }
+
+    public List<String> createButtons(String text){
+        List<String> listButton = new ArrayList<>();
+        listButton.add("/help");
+
+        List<String> fullCommandSet= new ArrayList<>();
+        fullCommandSet.add("/login");
+        fullCommandSet.add("/create");
+        fullCommandSet.add("/play");
+        fullCommandSet.add("/score");
+        fullCommandSet.add( "/stop");
+        fullCommandSet.add( "/exit");
+        fullCommandSet.add( "/me");
+        fullCommandSet.add( "/movies");
+        fullCommandSet.add( "/friends");
+        fullCommandSet.add( "/add");
+        fullCommandSet.add( "/save");
+        fullCommandSet.add("/help");
+
+        switch (text) {
+            case instruction:
+                listButton.add("/login");
+                listButton.add("/create");
+                return listButton;
+            case help:
+                return fullCommandSet;
+
+            case emptyLogin: //Можно добавить кнопки рандом на ник и пароль
+                listButton.add("/create"); //ник ещё может быть занят
+                return listButton;
+            case profileHasCreated:
+                listButton.add("/play");
+                listButton.add("/me");
+                listButton.add("/score");
+                return listButton;
+
+            case "Ok":
+                listButton.add("play");
+                listButton.add("/exit");
+                return listButton;
+
+            default:
+                return fullCommandSet;
+        }
     }
 }
