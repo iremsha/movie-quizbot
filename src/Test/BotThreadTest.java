@@ -13,6 +13,7 @@ import java.util.List;
 import static org.testng.AssertJUnit.assertEquals;
 
 class JThread extends Thread {
+    public static HashMap<Integer, Session> sessionsInThread = new HashMap<>();
     private HashMap<String, String> data = new MoviesGetter().getData();
     JThread(String name) throws IOException {
         super(name);
@@ -22,23 +23,38 @@ class JThread extends Thread {
 
         try{
 
-            int a = 1;
-            int b = 10;
-            Thread.sleep(500);
+            int a = 1; //Не очень красивые гранцы для рандома
+
+            int b = 100000;
+            Thread.sleep(100);
             QuizBot quizBot = new QuizBot(data);
             UserManager userManager = UserManager.getInstance();
             Bot bot = Bot.getInstance(quizBot, userManager);
 
-            String input_msg = "/create "+ Thread.currentThread().getName(); //Текст сообщения!
-            Long chat_id = 1L;
-
+            String input_msg = "/create " + Thread.currentThread().getName();
+            //Long chat_id = 1L;
+            int chat_id = a + (int) (Math.random() * b); //Рандом
             List<String> output_msg = null;
 
 
-            bot.processInput(input_msg, a + (int) (Math.random() * b));
+            var otv1 = bot.processInput(input_msg, chat_id);
+            System.out.println(otv1);
+
+            var otv2 = bot.processInput("pass", chat_id);
+            System.out.println(otv2);
 
 
-            Session session = bot.sessions.get(chat_id.intValue());
+
+
+            Session session = bot.sessions.get(chat_id);
+
+
+            var user = session.user;
+            if (user != null){
+            sessionsInThread.putIfAbsent(chat_id, session);
+            }
+
+            System.out.println(user);
             System.out.println(session);
             System.out.println(Thread.currentThread().getName());
 
@@ -83,9 +99,13 @@ public class BotThreadTest {
     }
 
     @Test
-    public void isPizdec() throws IOException{
-        for(int i=1; i < 10; i++)
+    public void isThread() throws IOException {
+        for (int i = 1; i < 10; i++)
             new JThread("JThread " + i).start();
+
+        var t = new JThread("JThread ");
+        System.out.println(t.sessionsInThread.size());
+
     }
 }
 
