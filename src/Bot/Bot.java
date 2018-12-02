@@ -49,6 +49,8 @@ public class Bot implements IBot {
         sessions.putIfAbsent(sessionId, new Session());
         Session session = sessions.get(sessionId);
 
+        System.out.println(session);
+
 
         String command = getCommand(userInput);
         String argument = getArgument(userInput);
