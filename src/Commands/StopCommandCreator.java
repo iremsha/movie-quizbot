@@ -5,7 +5,7 @@ public class StopCommandCreator {
         String name = "stor";
         String description = "stop playing";
         CommandFunction commandFunction = (bot, login, session) -> {
-            session.playing = false;
+            session.action = null;
             return "Ok";
         };
         return  new Command(name, description, commandFunction);

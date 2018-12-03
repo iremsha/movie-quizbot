@@ -8,7 +8,7 @@ public class StartCommandCreator {
         String description = "start chat bot";
         CommandFunction commandFunction = (bot, login, session) -> {
             //bot.sessions.put(session.Id, new Session());
-            session.availableCommands = Arrays.asList("login", "create");
+            session.toButtonsCommands = Arrays.asList("login", "create");
             return bot.instruction;
         };
         return  new Command(name, description, commandFunction);

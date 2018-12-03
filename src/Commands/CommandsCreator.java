@@ -44,4 +44,14 @@ public class CommandsCreator {
         }
         return result;
     }
+    public static String getHelp(List<Command> commands){
+        StringBuilder help = new StringBuilder();
+        for (var command:commands){
+            help.append(command.Name + "--" + command.Description + "\n");
+        }
+        return help.toString();
+    }
+    public static String getHelp(){
+        return getHelp(getListOfBotCommands());
+    }
 }

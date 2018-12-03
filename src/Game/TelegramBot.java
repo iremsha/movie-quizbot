@@ -106,11 +106,12 @@ public class TelegramBot extends TelegramLongPollingBot {
         replyKeyboardMarkup.setResizeKeyboard(true);
         List<KeyboardRow> keyboard = new ArrayList<>();
 
-         for (String textButtons : bot.createButtons(sendMessage.getText())){
-            KeyboardRow keyboardOneRow = new KeyboardRow();
-            keyboardOneRow.add(new KeyboardButton(textButtons));
+        var chatId = Integer.valueOf(sendMessage.getChatId());
+        KeyboardRow keyboardOneRow = new KeyboardRow();
+        for (String textButton : bot.sessions.get(chatId).toButtonsCommands) {
+            KeyboardButton button = new KeyboardButton("/" + textButton);
+            keyboardOneRow.add(button);
             keyboard.add(keyboardOneRow);
-
         }
 
         /*KeyboardRow keyboardOneRow = new KeyboardRow(); --Кнопки в строчку

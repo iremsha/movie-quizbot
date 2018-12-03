@@ -17,11 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Bot implements IBot {
 
     public IQuizBot quizBot;
-    private final String help = "/start - start game \n" + //дописать команды
-            "/score - show current score \n" +
-            "/stop - stop game \n" +
-            "/help - help?";
-    //public Bot.BotMessages botMessages = new Bot.BotMessages();
+    //private final String help = CommandsCreator.getHelp();
 
     public final String instruction = "If you've already played enter '/login' and your login\n" +
             "Else enter '/create' and your login\n" +
@@ -45,21 +41,24 @@ public class Bot implements IBot {
 
 
     public List<String> processInput(String userInput, int sessionId) throws IOException{
-        List<String> listMsg = new ArrayList<>();
         sessions.putIfAbsent(sessionId, new Session());
         Session session = sessions.get(sessionId);
-
 
         String command = getCommand(userInput);
         String argument = getArgument(userInput);
 
-        if (isCommand(userInput)) { //is available command
+        List<String> listMsg = new ArrayList<>();
+
+        if(isPriorityCommand(command)){
+            listMsg.add(processCommand(command,argument, session));
+        }
+        else if(session.user == null){
+            listMsg.add(identifyUser(command, argument, session));
+        }
+        else if (isCommand(userInput)) { //is available command
             listMsg.add(processCommand(command, argument, session));
-        } else if (session.askForPassword) {
-            listMsg.add(tryIdentifyUser(argument, session));
-        } else if (session.user == null) {
-            listMsg.add(BotMessages.needLogin);
-        } else if (session.playing) {
+        }
+        else if (session.action == UserAction.play) {
             String quizBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
             String nextQuestion = quizBot.getQuestionToOffer(session.user);
             session.lastOfferedQuestion = nextQuestion;
@@ -72,49 +71,8 @@ public class Bot implements IBot {
     }
 
     public String processCommand(String command, String argument, Session session) throws IOException{
-        session.askForLogin = false;
-        session.askForPassword = false;
+        session.askForLoginAndPassword = false;
         return commands.get(command).Execute.commandFunction(this, argument, session);
-//        switch (command) {
-//            case "/start":
-//                session.toButtonsCommands = new ArrayList<>(Arrays.asList("login", "create"));
-//                return instruction;
-//            case "/help":
-//                return help;
-//            case "/create":
-//                session.toButtonsCommands.clear();
-//                return processCommandCreate(argument, session);
-//            case "/login":
-//                session.toButtonsCommands.clear();
-//                return processCommandLogin(argument, session);
-//            case "/score":
-//                return processCommandGetInfo(User.UserInfo.Score, argument, session);
-//            case "/movies":
-//                return processCommandGetInfo(User.UserInfo.Movies, argument, session);
-//            case "/friends":
-//                return processCommandGetInfo(User.UserInfo.Friends, argument, session);
-//            case "/add":
-//                return processCommandAddFriend(argument, session);
-//            case "/play":
-//                session.toButtonsCommands = new ArrayList<>(Arrays.asList("stop", "score"));
-//                session.playing = true;
-//                String firstQuestion = quizBot.getQuestionToOffer(session.user);
-//                session.lastOfferedQuestion = firstQuestion;
-//                return quizBot.getInstruction() + "\n" + firstQuestion;
-//            case "/me":
-//                return session.user.Login;
-//            case "/stop":
-//                session.playing = false;
-//                return "Ok";
-//            case "/exit":
-//                session.user = null;
-//                return "bye";
-//            case "/save":
-//                userManager.saveChanges();
-//                return "done";
-//            default:
-//                return incorrectCommand;
-//        }
     }
 
     private String processCommandGetInfo(UserInfo info, String login, Session session) {
@@ -169,31 +127,31 @@ public class Bot implements IBot {
         return String.valueOf(userManager.getUser(login).getScore());
     }
 
-    private String processCommandCreate(String login, Session session) {
-        if (login.isEmpty()) {
-            return "Empty login";
-        }
+//    private String processCommandCreate(String login, Session session) {
+//        if (login.isEmpty()) {
+//            return "Empty login";
+//        }
+////        session.user = null;
+//        if (userManager.isUserInDB(login)) {
+//            return "This login has already taken";
+//        }
+//        session.enteredLogin = login;
+//        session.askForPassword = true;
+//        return "Enter password";
+//    }
+//
+//    public String processCommandLogin(String login, Session session) {
+//        if (login.isEmpty()) {
+//            return BotMessages.emptyLogin;
+//        }
 //        session.user = null;
-        if (userManager.isUserInDB(login)) {
-            return "This login has already taken";
-        }
-        session.enteredLogin = login;
-        session.askForPassword = true;
-        return "Enter password";
-    }
-
-    public String processCommandLogin(String login, Session session) {
-        if (login.isEmpty()) {
-            return BotMessages.emptyLogin;
-        }
-        session.user = null;
-        if (!userManager.isUserInDB(login)) {
-            return BotMessages.noUserWithThisLogin;
-        }
-        session.enteredLogin = login;
-        session.askForPassword = true;
-        return BotMessages.enterPassword;
-    }
+//        if (!userManager.isUserInDB(login)) {
+//            return BotMessages.noUserWithThisLogin;
+//        }
+//        session.enteredLogin = login;
+//        session.askForPassword = true;
+//        return BotMessages.enterPassword;
+//    }
 
     public String processCommandAddFriend(String argument, Session session) {
         String login = argument;
@@ -227,20 +185,10 @@ public class Bot implements IBot {
 //        return COMMANDS.containsKey(userInput);
         return userInput.startsWith("/");
     }
-
-    private boolean isPriorityCommand(String input) {
-        List<String> priorityCommands = Arrays.asList(new String[]{"/start", "/help", "/stop", "/create", "/login", "/save"});
-        return priorityCommands.contains(input); //проверить сравнение строк в данном случае
+    boolean isPriorityCommand(String command){
+        return Arrays.asList("start", "help").contains(command);
     }
 
-    private String getString(Iterable<String> iterable) {
-        // how to ??
-        StringBuilder result = new StringBuilder();
-        for (String element : iterable) {
-            result.append(element + " ");
-        }
-        return result.toString();
-    }
 
     private String getCommand(String input) {
         if (input.startsWith("/")) {
@@ -257,65 +205,105 @@ public class Bot implements IBot {
         }
         return input;
     }
-
-    private String tryIdentifyUser(String password, Session session) throws IOException {
-        String login = session.enteredLogin;
-        if (userManager.isUserInDB(login)) {
-            if (userManager.isCorrectPassword(login, password)) {
-                session.askForPassword = false;
-                session.user = userManager.getUser(session.enteredLogin);
-                return BotMessages.youLogInAs + login;
+    public String identifyUser(String command, String argument, Session session) throws IOException {
+        if (command.equals("login")||command.equals("create")){
+            session.action = UserAction.valueOf(command);
+            session.askForLoginAndPassword = true;
+            return "Enter login and password";
+        }
+        if (session.askForLoginAndPassword){
+            String[] loginAndPassword = argument.split("\\s", 2);
+            if (loginAndPassword.length != 2){
+                return  "enter l and passw sep by space";
             }
-            return BotMessages.incorrectPassword;
+            String login = loginAndPassword[0];
+            String password = loginAndPassword[1];
+            if (session.action == UserAction.login){
+                if (!userManager.isUserInDB(login)){
+                    return " no user with this login";
+                }
+                if (!userManager.isCorrectPassword(login, password)){
+                    return "incorrect passwe";
+                }
+                session.askForLoginAndPassword = false;
+                session.action = null;
+                session.user = userManager.getUser(login);
+                return "you login as " + session.user.Login;
+//                return commands.get("login").Execute.commandFunction(this, null, session);
+            }
+            if(session.action == UserAction.create){
+                //lock ??
+                if (userManager.isUserInDB(login)){
+                    return "login has taken";
+                }
+                session.askForLoginAndPassword = false;
+                session.action = null;
+                session.user = userManager.createUser(login, password);
+                return "you log in as " + session.user.Login;
+                //unlock
+            }
         }
-        session.askForPassword = false;
-
-        session.user = userManager.createUser(login, password);
-        return BotMessages.profileHasCreated; // + session.user.Login; - пока что так, для кнопок
+        return "need to log in";
     }
 
-    public List<String> createButtons(String text){
-        List<String> listButton = new ArrayList<>();
-        listButton.add("/help");
+//    private String tryIdentifyUser(String password, Session session) throws IOException {
+//        String login = session.enteredLogin;
+//        if (userManager.isUserInDB(login)) {
+//            if (userManager.isCorrectPassword(login, password)) {
+//                session.askForPassword = false;
+//                session.user = userManager.getUser(session.enteredLogin);
+//                return BotMessages.youLogInAs + login;
+//            }
+//            return BotMessages.incorrectPassword;
+//        }
+//        session.askForPassword = false;
+//
+//        session.user = userManager.createUser(login, password);
+//        return BotMessages.profileHasCreated + session.user.Login;
+//    }
 
-        List<String> fullCommandSet= new ArrayList<>();
-        fullCommandSet.add("/login");
-        fullCommandSet.add("/create");
-        fullCommandSet.add("/play");
-        fullCommandSet.add("/score");
-        fullCommandSet.add( "/stop");
-        fullCommandSet.add( "/exit");
-        fullCommandSet.add( "/me");
-        fullCommandSet.add( "/movies");
-        fullCommandSet.add( "/friends");
-        fullCommandSet.add( "/add");
-        fullCommandSet.add( "/save");
-        fullCommandSet.add("/help");
-
-        switch (text) {
-            case instruction:
-                listButton.add("/login");
-                listButton.add("/create");
-                return listButton;
-            case help:
-                return fullCommandSet;
-
-            case BotMessages.emptyLogin: //Можно добавить кнопки рандом на ник и пароль
-                listButton.add("/create"); //ник ещё может быть занят
-                return listButton;
-            case BotMessages.profileHasCreated:
-                listButton.add("/play");
-                listButton.add("/me");
-                listButton.add("/score");
-                return listButton;
-
-            case "Ok":
-                listButton.add("play");
-                listButton.add("/exit");
-                return listButton;
-
-            default:
-                return fullCommandSet;
-        }
-    }
+//    public List<String> createButtons0(String text){
+//        List<String> listButton = new ArrayList<>();
+//        listButton.add("/help");
+//
+//        List<String> fullCommandSet= new ArrayList<>();
+//        fullCommandSet.add("/login");
+//        fullCommandSet.add("/create");
+//        fullCommandSet.add("/play");
+//        fullCommandSet.add("/score");
+//        fullCommandSet.add( "/stop");
+//        fullCommandSet.add( "/exit");
+//        fullCommandSet.add( "/me");
+//        fullCommandSet.add( "/movies");
+//        fullCommandSet.add( "/friends");
+//        fullCommandSet.add( "/add");
+//        fullCommandSet.add( "/save");
+//        fullCommandSet.add("/help");
+//
+//        switch (text) {
+//            case instruction:
+//                listButton.add("/login");
+//                listButton.add("/create");
+//                return listButton;
+//            case help:
+//                return fullCommandSet;
+//
+//            case BotMessages.emptyLogin: //Можно добавить кнопки рандом на ник и пароль
+//                listButton.add("/create"); //ник ещё может быть занят
+//                return listButton;
+//            case BotMessages.profileHasCreated:
+//                listButton.add("/play");
+//                listButton.add("/me");
+//                listButton.add("/score");
+//                return listButton;
+//
+//            case "Ok":
+//                listButton.add("play");
+//                listButton.add("/exit");
+//                return listButton;
+//
+//            default:
+//                return fullCommandSet;
+//        }
+//    }
 }
