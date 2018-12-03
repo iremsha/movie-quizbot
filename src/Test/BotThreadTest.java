@@ -13,12 +13,17 @@ import java.util.HashMap;
 import java.util.List;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 class JThread extends Thread {
     private String msgForThread;
-    static HashMap<Integer, Session> sessionsInThread = new HashMap<>();
-    private HashMap<String, String> data = new MoviesGetter().getData();
+    private final String truePassword = " truePassword";
+    private final String falsePassword = " falsePassword";
 
+
+    static HashMap<Integer, Session> sessionsInThread = new HashMap<>();
+    public static ArrayList<String> answerForThreadFromBot = new ArrayList<>();
+    private HashMap<String, String> data = new MoviesGetter().getData();
     private  QuizBot quizBot = new QuizBot(data);
     private UserManager userManager = UserManager.getInstance();
     private  Bot bot = Bot.getInstance(quizBot, userManager);
@@ -33,7 +38,16 @@ class JThread extends Thread {
 
         try{
             Thread.sleep(500);
-            createAccount();
+            int a = 1;
+            int b = 100000;
+            int chat_id = a + (int) (Math.random() * b);
+
+            switch (msgForThread){
+
+                case "/create": createAccount(msgForThread, chat_id); break;
+                case "/login": loginAccount(msgForThread, chat_id); break;
+            }
+
 
         }
         catch(InterruptedException | IOException e){
@@ -41,20 +55,12 @@ class JThread extends Thread {
         }
     }
 
-    private void createAccount() throws IOException {
-        int a = 1; //Не очень красивые гранцы для рандома
-        int b = 100000;
-
-        String input_msg = msgForThread;
-
-        int chat_id = a + (int) (Math.random() * b); //Рандом
+    private void createAccount(String input_msg, int chat_id) throws IOException {
         //List<String> output_msg = null;
 
-
         bot.processInput(input_msg, chat_id);
-        //System.out.println(answerOne);
 
-        bot.processInput(Thread.currentThread().getName() + " myPassword", chat_id);
+        bot.processInput(Thread.currentThread().getName() + truePassword, chat_id);
         //System.out.println(answerTwo);
 
         Session session = bot.sessions.get(chat_id);
@@ -62,24 +68,31 @@ class JThread extends Thread {
         if (user != null){
             sessionsInThread.putIfAbsent(chat_id, session);
         }
+    }
 
-        //System.out.println(user);
-        //System.out.println(session);
-        //System.out.println(Thread.currentThread().getName());
+    private void loginAccount(String input_msg, int chat_id) throws IOException {
+        createAccount("/create", chat_id);
 
+        bot.processInput("/exit", chat_id);
+        bot.processInput(input_msg, chat_id);
+        String answer = bot.processInput(Thread.currentThread().getName() + truePassword, chat_id).get(0);
+        //System.out.println(answer);
 
+        answerForThreadFromBot.add(answer);
+        //System.out.println(bot.processInput(Thread.currentThread().getName() + truePassword, chat_id).get(0));
+        //System.out.println(answerForThreadFromBot.size());
     }
 }
 
-
 public class BotThreadTest {
-    private HashMap<String, String> data = new MoviesGetter().getData();
 
+    private HashMap<String, String> data = new MoviesGetter().getData();
+    private final int numberOfThreads = 10;
     private String instruction = "If you've already played enter '/login' and your login\n" +
             "Else enter '/create' and your login\n" +
             "If you want some more information enter '/help\n";
 
-    public HashMap<Integer, Session> sessions = new HashMap<>();  //why can't int
+    public HashMap<Integer, Session> sessions = new HashMap<>();
     public static Bot instance;
 
     private QuizBot quizBot = new QuizBot(data);
@@ -91,7 +104,7 @@ public class BotThreadTest {
 
     @Test
     public void isCommandTestFalse() throws IOException {
-        String input_msg = "/create Remsha"; //Текст сообщения!
+        String input_msg = "/create";
         Long chat_id = 1L;
 
         List<String> output_msg = null;
@@ -102,30 +115,74 @@ public class BotThreadTest {
     }
 
     @Test
-    public void moreUserWithSameLogin() throws IOException {
-        for (int i = 1; i < 10; i++) {
-            new JThread("JThread", "/create").start();
+    public void moreUserCreateWithSameLogin() throws IOException, InterruptedException {
+        var listThread = new ArrayList<Thread>();
+        for (int i = 0; i < numberOfThreads; i++) {
+            listThread.add(new JThread("JThread", "/create"));
         }
 
+        for (int i = 0; i < numberOfThreads; i++){
+            listThread.get(i).start();
+            listThread.get(i).join();
+        }
         assertEquals(1, JThread.sessionsInThread.size()); //Корретная ситуация когда создаласть только 1 уч.зп.
+    }
+    @Test
+    public void moreUserCreateWithDifferentLogin() throws IOException, InterruptedException {
+        var listThread = new ArrayList<Thread>();
+        for (int i = 0; i < numberOfThreads; i++) {
+            listThread.add(new JThread("JThread"+i, "/create"));
+        }
+
+        for (int i = 0; i < numberOfThreads; i++){
+            listThread.get(i).start();
+            listThread.get(i).join();
+        }
+        assertEquals(numberOfThreads, JThread.sessionsInThread.size()); //Корретная ситуация когда = кол-ву потоков.
+        JThread.sessionsInThread.clear();
+    }
+
+    @Test
+    public void moreUserGoWithSameLogin() throws IOException, InterruptedException {
+        var result = true;
+        var listThread = new ArrayList<Thread>();
+        for (int i = 0; i < numberOfThreads; i++) {
+            listThread.add(new JThread("JThread", "/login"));
+        }
+        for (int i = 0; i < numberOfThreads; i++){
+            listThread.get(i).start();
+            listThread.get(i).join();
+        }
+
+        for (int i = 0; i < numberOfThreads; i++){
+            if (JThread.answerForThreadFromBot.get(i).equals("You log in as JThread")){
+                result = false;
+            }
+        }
+        assertTrue(result); //Корретная ситуация когда все защли под своим логином.
 
     }
 
     @Test
-    public void moreUserWithDifferentLogin() throws IOException, InterruptedException {
-        int n = 10;
+    public void moreUserGoWithDifferent3ntLogin() throws IOException, InterruptedException {
+        var result = true;
         var listThread = new ArrayList<Thread>();
-        for (int i = 0; i < n; i++) {
-            listThread.add(new JThread("JThread"+i, "/create "));
+        for (int i = 0; i < numberOfThreads; i++) {
+            listThread.add(new JThread("JThread"+i, "/login"));
         }
 
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < numberOfThreads; i++){
             listThread.get(i).start();
             listThread.get(i).join();
         }
-        assertEquals(n, JThread.sessionsInThread.size()); //Корретная ситуация когда создаласть только 1 уч.зп.
-        JThread.sessionsInThread.clear();
 
+        for (int i = 0; i < numberOfThreads; i++){
+            if (JThread.answerForThreadFromBot.get(i).equals("You log in as "+listThread.get(0).getName())){
+                result = false;
+            }
+
+        }
+        assertTrue(result); //Корретная ситуация когда все защли под своим логином.
     }
 }
 
