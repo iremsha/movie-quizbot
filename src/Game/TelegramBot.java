@@ -111,8 +111,8 @@ public class TelegramBot extends TelegramLongPollingBot {
         for (String textButton : bot.sessions.get(chatId).toButtonsCommands) {
             KeyboardButton button = new KeyboardButton("/" + textButton);
             keyboardOneRow.add(button);
-            keyboard.add(keyboardOneRow);
         }
+        keyboard.add(keyboardOneRow);
 
         /*KeyboardRow keyboardOneRow = new KeyboardRow(); --Кнопки в строчку
         for (String textButtons : bot.createButtons(sendMessage.getText())){

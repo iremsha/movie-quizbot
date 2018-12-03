@@ -1,5 +1,9 @@
 package Commands;
 
+import Bot.*;
+import User.UserInfo;
+import User.UserInfoGetter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,5 +57,18 @@ public class CommandsCreator {
     }
     public static String getHelp(){
         return getHelp(getListOfBotCommands());
+    }
+
+    public static String getUserInfoCommand(UserInfo info, Bot bot, String login, Session session) {
+        if (login.equals("") || login.equals(session.user.Login)) {
+            return UserInfoGetter.get(info, session.user);
+        }
+        if (!bot.userManager.isUserInDB(login)) {
+            return BotMessages.noUserWithThisLogin;
+        }
+        if (!bot.userManager.hasUserPermission(session.user.Login, login)) {
+            return "You can see only your friends' information";
+        }
+        return UserInfoGetter.get(info, bot.userManager.getUser(login));
     }
 }

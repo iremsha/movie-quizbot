@@ -2,6 +2,8 @@ package Commands;
 
 import Bot.UserAction;
 
+import java.util.Arrays;
+
 public class PlayCommandCreator {
     public static Command create(){
         String name = "play";
@@ -10,6 +12,7 @@ public class PlayCommandCreator {
             session.action = UserAction.play;
             String firstQuestion = bot.quizBot.getQuestionToOffer(session.user);
             session.lastOfferedQuestion = firstQuestion;
+            session.toButtonsCommands = Arrays.asList("stop", "score");
             return bot.quizBot.getInstruction() + "\n" + firstQuestion;
         };
         return  new Command(name, description, commandFunction);

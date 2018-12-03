@@ -5,7 +5,7 @@ public class HelpCommandCreator {
         String name = "help";
         String description = "get commands with description";
         CommandFunction commandFunction = (bot, login, session) -> {
-            return "not implemented";
+            return bot.help;
         };
         return  new Command(name, description, commandFunction);
     }

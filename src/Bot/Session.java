@@ -1,5 +1,7 @@
 package Bot;
 import User.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Session {
@@ -12,5 +14,5 @@ public class Session {
     public boolean askForLoginAndPassword;
 //    public boolean askForLogin;
     public List<String> availableCommands;
-    public List<String> toButtonsCommands;
+    public List<String> toButtonsCommands = new ArrayList<>();
 }

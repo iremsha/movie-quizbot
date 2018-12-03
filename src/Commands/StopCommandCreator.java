@@ -2,7 +2,7 @@ package Commands;
 
 public class StopCommandCreator {
     public static Command create(){
-        String name = "stor";
+        String name = "stop";
         String description = "stop playing";
         CommandFunction commandFunction = (bot, login, session) -> {
             session.action = null;
