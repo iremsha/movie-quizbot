@@ -80,143 +80,45 @@ public class Bot implements IBot {
             session.action = UserAction.valueOf(command);
             session.toButtonsCommands = new ArrayList<>();
             session.askForLoginAndPassword = true;
-            return "Enter login and password";
+            return BotMessages.enterLoginAndPassword;
         }
         if (session.askForLoginAndPassword){
             String[] loginAndPassword = argument.split("\\s", 2);
             if (loginAndPassword.length != 2){
-                return  "enter l and passw sep by space";
+                return BotMessages.enterLoginAndPassword;
             }
             String login = loginAndPassword[0];
             String password = loginAndPassword[1];
             if (session.action == UserAction.login){
                 if (!userManager.isUserInDB(login)){
-                    return " no user with this login";
+                    return BotMessages.noUserWithThisLogin;
                 }
                 if (!userManager.isCorrectPassword(login, password)){
-                    return "incorrect passwe";
+                    return BotMessages.incorrectPassword;
                 }
                 session.askForLoginAndPassword = false;
                 session.action = null;
                 session.user = userManager.getUser(login);
-                return "you login as " + session.user.Login;
-//                return commands.get("login").Execute.commandFunction(this, null, session);
+                return BotMessages.youLogInAs + " " + session.user.Login;
             }
             if(session.action == UserAction.create){
                 //lock ??
                 Lock lock = new ReentrantLock();
                 lock.lock();
                 if (userManager.isUserInDB(login)){
-                    return "login has taken";
+                    return BotMessages.loginHasTaken;
                 }
                 session.askForLoginAndPassword = false;
                 session.action = null;
                 session.user = userManager.createUser(login, password);
                 lock.unlock();
-                return "you log in as " + session.user.Login;
+                return BotMessages.youLogInAs + " " + session.user.Login;
 
                 //unlock
             }
         }
-        return "need to log in";
+        return BotMessages.needToLogin;
     }
-
-//    private String processCommandGetInfo(UserInfo info, String login, Session session) {
-//        if (login.equals("") || login.equals(session.user.Login)) {
-//            return UserInfoGetter.get(info, session.user);
-//        }
-//        if (!userManager.isUserInDB(login)) {
-//            return BotMessages.noUserWithThisLogin;
-//        }
-//        if (!hasUserPermission(session.user.Login, login)) {
-//            return "You can see only your friends' information";
-//        }
-//        return UserInfoGetter.get(info, userManager.getUser(login));
-//    }
-//
-//    private String processCommandFriends(String login, Session session) {
-//        if (login.equals("") || login.equals(session.user.Login)) {
-//            return session.user.Friends.toString();
-//        }
-//        if (!userManager.isUserInDB(login)) {
-//            return "No user with this login";
-//        }
-//        if (!hasUserPermission(session.user.Login, login)) {
-//            return "You can see only your friends' information";
-//        }
-//        return userManager.getUser(login).Friends.toString();
-//    }
-//
-//    private String processCommandMovies(String login, Session session) {
-//        if (login.equals("") || login.equals(session.user.Login)) {
-//            return session.user.Known.toString();
-//        }
-//        if (!userManager.isUserInDB(login)) {
-//            return "No user with this login";
-//        }
-//        if (!hasUserPermission(session.user.Login, login)) {
-//            return "You can see only your friends' information";
-//        }
-//        return userManager.getUser(login).Known.toString();
-//    }
-//
-//    private String processCommandScore(String login, Session session) {
-//        if (login.equals("") || login.equals(session.user.Login)) {
-//            return String.valueOf(session.user.getScore());
-//        }
-//        if (!userManager.isUserInDB(login)) {
-//            return BotMessages.noUserWithThisLogin;
-//        }
-//        if (!hasUserPermission(session.user.Login, login)) {
-//            return "You can see only your friends' information";
-//        }
-//        return String.valueOf(userManager.getUser(login).getScore());
-//    }
-
-//    private String processCommandCreate(String login, Session session) {
-//        if (login.isEmpty()) {
-//            return "Empty login";
-//        }
-////        session.user = null;
-//        if (userManager.isUserInDB(login)) {
-//            return "This login has already taken";
-//        }
-//        session.enteredLogin = login;
-//        session.askForPassword = true;
-//        return "Enter password";
-//    }
-//
-//    public String processCommandLogin(String login, Session session) {
-//        if (login.isEmpty()) {
-//            return BotMessages.emptyLogin;
-//        }
-//        session.user = null;
-//        if (!userManager.isUserInDB(login)) {
-//            return BotMessages.noUserWithThisLogin;
-//        }
-//        session.enteredLogin = login;
-//        session.askForPassword = true;
-//        return BotMessages.enterPassword;
-//    }
-
-    public String processCommandAddFriend(String argument, Session session) {
-        String login = argument;
-        if (login.equals("")) {
-            return "Need login after command";
-        }
-        if (login.equals(session.user.Login)) {
-            return "You can't add yourself";
-        }
-        if (!userManager.isUserInDB(login)) {
-            return BotMessages.noUserWithThisLogin;
-        }
-        if (userManager.areFriends(session.user.Login, login)) {
-            return "You've already added this user";
-        }
-        userManager.addFriendToUser(session.user.Login, login);
-        return "Done";
-    }
-
 
     boolean isCommand(String userInput) {
         return commands.containsKey(getCommand(userInput));

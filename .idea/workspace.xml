@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e815e892-b2a3-44ac-88e0-f8d73497a226" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/Bot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bot/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bot/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bot/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/CommandsCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/CommandsCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/FriendsCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/FriendsCommandCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/HelpCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/HelpCommandCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/MoviesCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/MoviesCommandCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/PlayCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/PlayCommandCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/ScoreCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/ScoreCommandCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Commands/StopCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/StopCommandCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bot/BotMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bot/BotMessages.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +34,8 @@
       <file leaf-file-name="LoginCommandCreator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Commands/LoginCommandCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state>
+              <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -60,20 +52,27 @@
       <file leaf-file-name="Bot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Bot/Bot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1520">
-              <caret line="115" column="61" lean-forward="true" selection-start-line="115" selection-start-column="61" selection-end-line="115" selection-end-column="61" />
+            <state relative-caret-position="1524">
+              <caret line="119" column="38" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#858#993#0" />
                 <element signature="e#999#1201#0" />
                 <element signature="e#1208#2420#0" />
                 <element signature="e#2426#2665#0" />
-                <element signature="e#2667#2757#0" />
-                <element signature="e#5737#6364#0" />
                 <element signature="e#6371#6518#0" />
                 <element signature="e#6648#6866#0" />
                 <element signature="e#6872#7105#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BotMessages.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bot/BotMessages.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -111,7 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/StartCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/commandsCreators/StartCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/commandsCreators/Command.java" />
         <option value="$PROJECT_DIR$/src/Command.java" />
@@ -161,6 +159,7 @@
         <option value="$PROJECT_DIR$/src/Commands/MoviesCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Commands/ScoreCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Commands/StopCommandCreator.java" />
+        <option value="$PROJECT_DIR$/src/Bot/BotMessages.java" />
         <option value="$PROJECT_DIR$/src/Bot/Bot.java" />
       </list>
     </option>
@@ -546,13 +545,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Commands/ICommandFunction.java" />
-    <entry file="file://$PROJECT_DIR$/src/Bot/BotMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bot/QuizBot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -730,13 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/ExitCommandCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Commands/FriendsCommandCreator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -798,23 +783,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Commands/LoginCommandCreator.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/ExitCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bot/BotMessages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bot/Bot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1520">
-          <caret line="115" column="61" lean-forward="true" selection-start-line="115" selection-start-column="61" selection-end-line="115" selection-end-column="61" />
+        <state relative-caret-position="1524">
+          <caret line="119" column="38" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#858#993#0" />
             <element signature="e#999#1201#0" />
             <element signature="e#1208#2420#0" />
             <element signature="e#2426#2665#0" />
-            <element signature="e#2667#2757#0" />
-            <element signature="e#5737#6364#0" />
             <element signature="e#6371#6518#0" />
             <element signature="e#6648#6866#0" />
             <element signature="e#6872#7105#0" />

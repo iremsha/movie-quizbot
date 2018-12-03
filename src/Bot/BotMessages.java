@@ -2,16 +2,14 @@ package Bot;
 
 public class BotMessages {
 
-//    public final static String instruction = "If you've already played enter '/login' and your login\n" +
-//            "Else enter '/create' and your login\n" +
-//            "If you want some more information enter '/help\n";
-    public final static String needLogin = "Need log in. Enter '/login' and your login or /create and new login";
+    public final static String needToLogin = "Need to log in";
+    public final static String enterLoginAndPassword = "Enter login and password separeted by space";
     public final static String unexpectedInput = "Unexpected input. Try '/help'";
     public final static String incorrectCommand = "Incorrect command";
-    public final static String incorrectPassword = "Incorrect password. Try again";
+    public final static String incorrectPassword = "Incorrect password or login";
     public final static String noUserWithThisLogin = "No user with this login";
-    public final static String enterPassword = "Enter password";
     public final static String emptyLogin = "Empty login";
     public final static String youLogInAs  = "You log in as ";
+    public final static String loginHasTaken  = "This login has already taken";
     public final static String profileHasCreated = "Profile has created";
 }
