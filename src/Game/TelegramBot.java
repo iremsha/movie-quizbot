@@ -29,7 +29,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private QuizBot quizBot = new QuizBot(data);
     private UserManager userManager = UserManager.getInstance();
-    private Bot bot = Bot.getInstance(quizBot, userManager);
+    private Bot bot = new Bot(quizBot, userManager);
 
     public TelegramBot() throws IOException {
     }

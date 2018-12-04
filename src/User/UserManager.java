@@ -5,16 +5,26 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class UserManager implements IUserManager {
     private ConcurrentHashMap<String, User> dataBase;
+//    private HashMap<String, User> dataBase;
     //private HashSet<String> changed;
-    private static UserManager instance;
+    public static UserManager instance;
+    static {
+        try {
+            instance = new UserManager();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private UserManager() throws IOException {
         dataBase = new ConcurrentHashMap<>(UsersSaver.getAllUsers());
+        //dataBase = new HashMap<>(UsersSaver.getAllUsers());
     }
+
     public static UserManager getInstance() throws IOException {
-        if (instance == null){
-            instance = new UserManager();
-        }
+//        if (instance == null){
+//            instance = new UserManager();
+//        }
         return instance;
     }
 

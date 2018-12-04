@@ -37,7 +37,7 @@ class JThread extends Thread {
     public void run(){
 
         try{
-            Thread.sleep(500);
+            Thread.sleep(0);
             int a = 1;
             int b = 100000;
             int chat_id = a + (int) (Math.random() * b);
@@ -87,13 +87,7 @@ class JThread extends Thread {
 public class BotThreadTest {
 
     private HashMap<String, String> data = new MoviesGetter().getData();
-    private final int numberOfThreads = 10;
-    private String instruction = "If you've already played enter '/login' and your login\n" +
-            "Else enter '/create' and your login\n" +
-            "If you want some more information enter '/help\n";
-
-    public HashMap<Integer, Session> sessions = new HashMap<>();
-    public static Bot instance;
+    private final int numberOfThreads = 100;
 
     private QuizBot quizBot = new QuizBot(data);
     private UserManager userManager = UserManager.getInstance();
@@ -116,7 +110,7 @@ public class BotThreadTest {
 
     @Test
     public void moreUserCreateWithSameLogin() throws IOException, InterruptedException {
-        var listThread = new ArrayList<Thread>();
+        var listThread = new ArrayList<JThread>();
         for (int i = 0; i < numberOfThreads; i++) {
             listThread.add(new JThread("JThread", "/create"));
         }
@@ -129,7 +123,7 @@ public class BotThreadTest {
     }
     @Test
     public void moreUserCreateWithDifferentLogin() throws IOException, InterruptedException {
-        var listThread = new ArrayList<Thread>();
+        var listThread = new ArrayList<JThread>();
         for (int i = 0; i < numberOfThreads; i++) {
             listThread.add(new JThread("JThread"+i, "/create"));
         }
@@ -145,7 +139,7 @@ public class BotThreadTest {
     @Test
     public void moreUserGoWithSameLogin() throws IOException, InterruptedException {
         var result = true;
-        var listThread = new ArrayList<Thread>();
+        var listThread = new ArrayList<JThread>();
         for (int i = 0; i < numberOfThreads; i++) {
             listThread.add(new JThread("JThread", "/login"));
         }
@@ -166,7 +160,7 @@ public class BotThreadTest {
     @Test
     public void moreUserGoWithDifferent3ntLogin() throws IOException, InterruptedException {
         var result = true;
-        var listThread = new ArrayList<Thread>();
+        var listThread = new ArrayList<JThread>();
         for (int i = 0; i < numberOfThreads; i++) {
             listThread.add(new JThread("JThread"+i, "/login"));
         }

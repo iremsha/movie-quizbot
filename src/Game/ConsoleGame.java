@@ -26,7 +26,7 @@ class ConsoleGame {
         ConsoleGame game = new ConsoleGame();
         QuizBot quizBot = new QuizBot(game.data);
         UserManager userManager = UserManager.getInstance();
-        Bot bot = Bot.getInstance(quizBot, userManager);
+        Bot bot = new Bot(quizBot, userManager);
 
         Scanner scan = new Scanner(System.in);
         int sessionId = new Random().nextInt();
