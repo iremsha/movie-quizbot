@@ -23,10 +23,10 @@ class JThread extends Thread {
 
     static HashMap<Integer, Session> sessionsInThread = new HashMap<>();
     public static ArrayList<String> answerForThreadFromBot = new ArrayList<>();
-    private HashMap<String, String> data = new MoviesGetter().getData();
+    private HashMap<String, String> data = new MoviesGetter("").getData();
     private  QuizBot quizBot = new QuizBot(data);
     private UserManager userManager = UserManager.getInstance();
-    private  Bot bot = Bot.getInstance(quizBot, userManager);
+    private  Bot bot = new Bot(quizBot, userManager);
 
     JThread(String name, String msg) throws IOException {
         super(name);
@@ -86,12 +86,12 @@ class JThread extends Thread {
 
 public class BotThreadTest {
 
-    private HashMap<String, String> data = new MoviesGetter().getData();
+    private HashMap<String, String> data = new MoviesGetter("").getData();
     private final int numberOfThreads = 100;
 
     private QuizBot quizBot = new QuizBot(data);
     private UserManager userManager = UserManager.getInstance();
-    private Bot bot = Bot.getInstance(quizBot, userManager);
+    private Bot bot = new Bot(quizBot, userManager);
 
     public BotThreadTest() throws IOException {
     }

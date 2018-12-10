@@ -25,36 +25,27 @@ public class Bot implements IBot {
     public IUserManager userManager;
     public ConcurrentHashMap<Integer, Session> sessions = new ConcurrentHashMap<>();
     public HashMap<String, Command> commands = CommandsCreator.getBotCommands();
-    public static Bot instance;
-    private Bot(IQuizBot quizBot, IUserManager userManager) {
+
+    public Bot(IQuizBot quizBot, IUserManager userManager) {
         this.quizBot = quizBot;
         this.userManager = userManager;
     }
 
-    public static Bot getInstance(IQuizBot quizBot, IUserManager userManager) {
-        if (instance == null) {
-            instance = new Bot(quizBot, userManager);
-        }
-        return instance;
-    }
-
-
     public List<String> processInput(String userInput, int sessionId) throws IOException{
         sessions.putIfAbsent(sessionId, new Session());
         Session session = sessions.get(sessionId);
-
+//синхр доступ если с неск устрр (для тг)
         String command = getCommand(userInput);
         String argument = getArgument(userInput);
 
         List<String> listMsg = new ArrayList<>();
-
         if(isPriorityCommand(command)){
             listMsg.add(processCommand(command,argument, session));
         }
-        else if(session.user == null){
+        else if(session.user == null || session.action == UserAction.create || session.action == UserAction.login ){
             listMsg.add(identifyUser(command, argument, session));
         }
-        else if (isCommand(userInput)) { //is available command
+        else if (isCommand(userInput)) {
             listMsg.add(processCommand(command, argument, session));
         }
         else if (session.action == UserAction.play) {
@@ -76,10 +67,14 @@ public class Bot implements IBot {
 
 
     public String identifyUser(String command, String argument, Session session) throws IOException {
+        if (session.user == null){
+            session.toButtonsCommands = ButtonsLists.whenUserNull();
+        }
         if (command.equals("login")||command.equals("create")){
             session.action = UserAction.valueOf(command);
             session.toButtonsCommands = new ArrayList<>();
             session.askForLoginAndPassword = true;
+            session.toButtonsCommands = ButtonsLists.whenWaitForPassword();
             return BotMessages.enterLoginAndPassword;
         }
         if (session.askForLoginAndPassword){
@@ -90,48 +85,55 @@ public class Bot implements IBot {
             String login = loginAndPassword[0];
             String password = loginAndPassword[1];
             if (session.action == UserAction.login){
-                if (!userManager.isUserInDB(login)){
-                    return BotMessages.noUserWithThisLogin;
-                }
-                if (!userManager.isCorrectPassword(login, password)){
-                    return BotMessages.incorrectPassword;
-                }
-                session.askForLoginAndPassword = false;
-                session.action = null;
-                session.user = userManager.getUser(login);
-                return BotMessages.youLogInAs + " " + session.user.Login;
+                return tryLoginUser(login, password, session);
             }
             if(session.action == UserAction.create){
-                //lock ??
-                Lock lock = new ReentrantLock();
-                lock.lock();
-                if (userManager.isUserInDB(login)){
-                    return BotMessages.loginHasTaken;
+                return tryCreateUser(login, password, session);
                 }
-                session.askForLoginAndPassword = false;
-                session.action = null;
-                session.user = userManager.createUser(login, password);
-                lock.unlock();
-                return BotMessages.youLogInAs + " " + session.user.Login;
-
-                //unlock
-            }
         }
         return BotMessages.needToLogin;
     }
 
+    private String tryCreateUser(String login, String password, Session session) throws IOException {
+        Lock lock = new ReentrantLock();
+        lock.lock();
+        if (userManager.isUserInDB(login)){
+            return BotMessages.loginHasTaken;
+        }
+        session.askForLoginAndPassword = false;
+        session.action = null;
+        session.user = userManager.createUser(login, password);
+        lock.unlock();
+        commands.get("save").Execute.commandFunction(this, "", session);
+        session.toButtonsCommands  = ButtonsLists.whenNoPlaying();
+        return BotMessages.youLogInAs + " " + session.user.Login;
+    }
+
+    private String tryLoginUser(String login, String password, Session session){
+        if (!userManager.isUserInDB(login)){
+            return BotMessages.noUserWithThisLogin;
+        }
+        if (!userManager.isCorrectPassword(login, password)){
+            return BotMessages.incorrectPassword;
+        }
+        session.askForLoginAndPassword = false;
+        session.action = null;
+        session.user = userManager.getUser(login);
+        session.toButtonsCommands = ButtonsLists.whenNoPlaying();
+        return BotMessages.youLogInAs + " " + session.user.Login;
+    }
+
+
     boolean isCommand(String userInput) {
         return commands.containsKey(getCommand(userInput));
-//        return userInput.startsWith("/");
     }
 
     boolean isPriorityCommand(String command){
-        return Arrays.asList("start", "help").contains(command);
+        return Arrays.asList("start", "help", "login", "create").contains(command);
     }
 
     private String getCommand(String input) {
         if (input.startsWith("/")) {
-//            return input.split("\\s", 2)[0];
             return input.split("\\s", 2)[0].substring(1);
         }
         return "";

@@ -7,26 +7,20 @@ public class UserManager implements IUserManager {
     private ConcurrentHashMap<String, User> dataBase;
 //    private HashMap<String, User> dataBase;
     //private HashSet<String> changed;
-    public static UserManager instance;
-    static {
-        try {
-            instance = new UserManager();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private static UserManager instance;
 
-    private UserManager() throws IOException {
+
+    UserManager() throws IOException {
         dataBase = new ConcurrentHashMap<>(UsersSaver.getAllUsers());
         //dataBase = new HashMap<>(UsersSaver.getAllUsers());
     }
-
-    public static UserManager getInstance() throws IOException {
-//        if (instance == null){
-//            instance = new UserManager();
-//        }
+    public synchronized static UserManager getInstance() throws IOException {
+        if (instance == null) {
+            instance = new UserManager();
+        }
         return instance;
     }
+
 
     public boolean isUserInDB(String userLogin){
         return dataBase.containsKey(userLogin);

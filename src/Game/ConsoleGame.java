@@ -17,7 +17,7 @@ class ConsoleGame {
 //        put("A Clockwork Orange", "Kubrick");
 //        put("Blue Velvet", "Lynch");
 //    }};
-    private HashMap<String, String> data = new MoviesGetter().getData();
+    private HashMap<String, String> data = new MoviesGetter("https://www.kinopoisk.ru/user/13956769/movies/list/type/363730/#list").getData();
 
     ConsoleGame() throws IOException {
     }

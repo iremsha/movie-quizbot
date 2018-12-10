@@ -1,14 +1,8 @@
 package Game;
 
-import Bot.*;
-import User.*;
-import Data.*;
-
-import org.telegram.telegrambots.ApiContextInitializer;
+import Bot.Bot;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
@@ -20,32 +14,14 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class TelegramBot extends TelegramLongPollingBot {
 
-    private HashMap<String, String> data = new MoviesGetter().getData();
+    private Bot bot;
 
-    private QuizBot quizBot = new QuizBot(data);
-    private UserManager userManager = UserManager.getInstance();
-    private Bot bot = new Bot(quizBot, userManager);
-
-    public TelegramBot() throws IOException {
-    }
-
-    public static void main(String[] args) {
-        ApiContextInitializer.init();
-        TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
-
-        try {
-            telegramBotsApi.registerBot(new TelegramBot());
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println("IOException");
-            e.printStackTrace();
-        }
+    public TelegramBot(Bot bot){
+        this.bot = bot;
     }
 
     @Override
@@ -85,18 +61,6 @@ public class TelegramBot extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
-    }
-
-    private void sendPht(long chatId, String p) {
-        SendPhoto sendPhoto = new SendPhoto();
-        sendPhoto.setChatId(chatId);
-        sendPhoto.setPhoto(p);
-        try {
-            execute(sendPhoto);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
-
     }
 
     private void setButtons(SendMessage sendMessage) {

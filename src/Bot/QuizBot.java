@@ -25,7 +25,12 @@ public class QuizBot implements IQuizBot {
         String correctAnswer = questionAndAnswer.get(question);
         userAnswer = userAnswer.trim();
 
-        if (userAnswer.equalsIgnoreCase(correctAnswer) || userAnswer.equalsIgnoreCase(correctAnswer.split(" ")[1])){
+        if (userAnswer.equalsIgnoreCase(correctAnswer)){
+            praiseUser(user, question);
+            return goodJobMessage;
+        }
+        var correctAnswerArr = correctAnswer.split(" ");
+        if (correctAnswerArr.length > 1 && userAnswer.equalsIgnoreCase(correctAnswerArr[1])){
             praiseUser(user, question);
             return goodJobMessage;
         }
