@@ -13,7 +13,8 @@ import java.io.IOException;
 public class TelegramStart {
     public static void main(String[] args) throws IOException {
 
-        var data = new MoviesGetter("https://www.kinopoisk.ru/user/13956769/movies/list/type/363730/#list").getData();
+        String link = "https://www.kinopoisk.ru/user/13956769/movies/list/type/363730/#list";
+        var data = new MoviesGetter(link).getData();
         QuizBot quizBot = new QuizBot(data);
         UserManager userManager = UserManager.getInstance();
         Bot bot = new Bot(quizBot, userManager);
