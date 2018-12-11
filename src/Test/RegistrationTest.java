@@ -10,7 +10,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RegistrationTest {
-    Bot bot = new Bot(new QuizBot(null), UserManagerForTest.getInstance());
+   // Bot bot = new Bot(new QuizBot(null), UserManagerForTest.getInstance());
 
     private RegistrationTest() throws IOException {
 //        Bot bot = new Bot(new QuizBot(null), UserManagerForTest.getInstance());
@@ -60,7 +60,7 @@ public class RegistrationTest {
     public void canNotLoginWithNewLogin() throws IOException {
         Bot bot = new Bot(new QuizBot(null), UserManagerForTest.getInstance());
         bot.processInput("/login", 0);
-        var output = bot.processInput("login password", 0);
+        var output = bot.processInput("new_login password", 0);
         var user = bot.sessions.get(0).user;
         assertNull(user);
         assertEquals(BotMessages.noUserWithThisLogin, output.get(0));
@@ -77,5 +77,14 @@ public class RegistrationTest {
         var user = bot.sessions.get(0).user;
         assertNull(user);
     }
+    @Test
+    public void canGetSelfLogin() throws IOException {
+        Bot bot = new Bot(new QuizBot(null), UserManagerForTest.getInstance());
+        bot.processInput("/create", 0);
+        bot.processInput("login password", 0);
+        var output = bot.processInput("/me", 0);
+        assertEquals("login", output.get(0));
+    }
+
 
 }

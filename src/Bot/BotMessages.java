@@ -12,4 +12,7 @@ public class BotMessages {
     public final static String youLogInAs  = "You log in as ";
     public final static String loginHasTaken  = "This login has already taken";
     public final static String profileHasCreated = "Profile has created";
+    public final static String cantAddYourSelf = "You can't add yourself";
+    public final static String needLoginAfterCommand = "Need login after command";
+    public final static String canSeeOnlyFriendsInfo = "You can see only your friends' information";
 }

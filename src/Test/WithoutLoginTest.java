@@ -27,17 +27,12 @@ public class WithoutLoginTest {
         assertEquals(bot.instruction, output.get(0));
     }
 
-//    @Test
-//    public void cantPlay() throws IOException {
-//        var output = bot.processInput("/play", 0);
-//        assertEquals(BotMessages.needToLogin, output);
-//    }
     @Test
     public void canNotDo() throws IOException{
         var commands = Arrays.asList("play", "score", "me");
         List<String> output;
         for (var command : commands){
-            output = bot.processInput("/help", 0);
+            output = bot.processInput(command, 0);
             assertEquals(BotMessages.needToLogin, output.get(0));
         }
     }

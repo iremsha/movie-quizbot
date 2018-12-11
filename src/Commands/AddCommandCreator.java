@@ -1,17 +1,20 @@
 package Commands;
+
+import Bot.BotMessages;
+
 public class AddCommandCreator {
     public static Command create(){
         String name = "add";
         String description = "add friend";
         CommandFunction commandFunction = (bot, login, session) -> {
             if (login.equals("")) {
-                return "Need login after command";
+                return BotMessages.needLoginAfterCommand;
             }
             if (login.equals(session.user.Login)) {
-                return "You can't add yourself";
+                return BotMessages.cantAddYourSelf;
             }
             if (!bot.userManager.isUserInDB(login)) {
-                return "No user with this login";
+                return BotMessages.noUserWithThisLogin;
             }
             bot.userManager.addFriendToUser(session.user.Login, login);
             return "Done";
