@@ -29,6 +29,8 @@ public class Bot implements IBot {
     public Bot(IQuizBot quizBot, IUserManager userManager) {
         this.quizBot = quizBot;
         this.userManager = userManager;
+
+//        sessions.computeIfPresent()
     }
 
     public List<String> processInput(String userInput, int sessionId) throws IOException{
