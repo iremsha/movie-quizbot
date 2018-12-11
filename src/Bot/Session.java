@@ -15,7 +15,8 @@ public class Session {
     public Session(){
     }
 
-    public Session(User user, UserAction action, String lastOfferedQuestion, boolean askForLoginAndPassword, List<String> toButtonsCommands ){
+    public Session(User user, UserAction action, String lastOfferedQuestion,
+                   boolean askForLoginAndPassword, List<String> toButtonsCommands ){
         this.user = user;
         this.action = action;
         this.lastOfferedQuestion = lastOfferedQuestion;

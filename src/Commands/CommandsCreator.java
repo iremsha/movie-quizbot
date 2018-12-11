@@ -60,14 +60,15 @@ public class CommandsCreator {
         return getHelp(getListOfBotCommands());
     }
 
-    public static String getUserInfoCommand(UserInfo info, Bot bot, String login, Session session) throws IOException {
-        if (login.equals("") || login.equals(session.user.Login)) {
-            return UserInfoGetter.get(info, session.user);
+    public static String getUserInfoCommand(UserInfo info, Bot bot, String login, int sessionId) throws IOException {
+        var session = bot.sessions.get(sessionId);
+        if (login.equals("") || login.equals(session.getUser().Login)) {
+            return UserInfoGetter.get(info, session.getUser());
         }
         if (!bot.userManager.isUserInDB(login)) {
             return BotMessages.noUserWithThisLogin;
         }
-        if (!bot.userManager.hasUserPermission(session.user.Login, login)) {
+        if (!bot.userManager.hasUserPermission(session.getUser().Login, login)) {
             return BotMessages.canSeeOnlyFriendsInfo;
         }
         return UserInfoGetter.get(info, bot.userManager.getUser(login));

@@ -7,5 +7,5 @@ import java.io.IOException;
 
 @FunctionalInterface
 public interface CommandFunction{
-    String commandFunction(Bot bot, String input, Session session) throws IOException;
+    String commandFunction(Bot bot, String input, int sessionId) throws IOException;
 }

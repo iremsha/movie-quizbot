@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e815e892-b2a3-44ac-88e0-f8d73497a226" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bot/Bot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Bot/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bot/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/AddCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/AddCommandCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/CommandFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/CommandFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/CommandsCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/CommandsCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/ExitCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/ExitCommandCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/MeCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/MeCommandCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/PlayCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/PlayCommandCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/StartCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/StartCommandCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/StopCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/StopCommandCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game/TelegramBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test/BotThreadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/BotThreadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test/PlayingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/PlayingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test/RegistrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/RegistrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/UserManagerForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User/UserManagerForTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/login.json" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,31 +44,59 @@
       <file leaf-file-name="Bot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Bot/Bot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="54" column="73" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="73" />
+            <state relative-caret-position="196">
+              <caret line="128" column="20" selection-start-line="128" selection-start-column="17" selection-end-line="128" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#identifyUser#0;class#Bot#0" />
-                <element signature="method#tryCreateUser#0;class#Bot#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StopCommandCreator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Commands/StopCommandCreator.java">
+      <file leaf-file-name="ButtonsLists.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bot/ButtonsLists.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+            <state relative-caret-position="220">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#136#137#0" expanded="true" />
+                <element signature="e#191#192#0" expanded="true" />
+                <element signature="e#391#392#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartCommandCreator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Commands/StartCommandCreator.java">
+      <file leaf-file-name="WithoutLoginTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/WithoutLoginTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+            <state relative-caret-position="80">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayingTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/PlayingTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TelegramBot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Game/TelegramBot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="81" column="64" lean-forward="true" selection-start-line="81" selection-start-column="64" selection-end-line="81" selection-end-column="64" />
+              <folding>
+                <element signature="method#getBotToken#0;class#TelegramBot#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,8 +104,8 @@
       <file leaf-file-name="Session.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bot/Session.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="18" column="25" lean-forward="true" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+            <state relative-caret-position="116">
+              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,66 +113,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuizBot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Bot/QuizBot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="22" column="81" selection-start-line="22" selection-start-column="77" selection-end-line="22" selection-end-column="81" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#356#357#0" expanded="true" />
-                <element signature="e#396#397#0" expanded="true" />
-                <element signature="method#getQuestionToOffer#0;class#QuizBot#0" />
-                <element signature="method#getRandomQuestion#0;class#QuizBot#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MeCommandCreator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Commands/MeCommandCreator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginCommandCreator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Commands/LoginCommandCreator.java">
+      <file leaf-file-name="RegistrationTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/RegistrationTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="6" column="71" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConsoleGame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Game/ConsoleGame.java">
+      <file leaf-file-name="Invoker.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/testng/lib/testng.jar!/org/testng/internal/Invoker.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="23" />
+            <state relative-caret-position="131">
+              <caret line="477" selection-start-line="477" selection-end-line="477" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserManagerForTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/User/UserManagerForTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="50" lean-forward="true" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1057#1058#0" expanded="true" />
+                <element signature="e#1131#1132#0" expanded="true" />
+                <element signature="e#2213#2214#0" expanded="true" />
+                <element signature="e#2265#2266#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TelegramStart.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Game/TelegramStart.java">
+      <file leaf-file-name="UserManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/User/UserManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetSelfInfoTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test/GetSelfInfoTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="1330">
+              <caret line="73" lean-forward="true" selection-start-line="23" selection-end-line="73" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1239#1240#0" expanded="true" />
+                <element signature="e#1313#1314#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,6 +179,7 @@
       <find>session</find>
       <find>synchronized</find>
       <find>UserManager</find>
+      <find>put</find>
     </findStrings>
     <replaceStrings>
       <replace>IMainBot</replace>
@@ -167,62 +196,63 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/CommandsCreator.java" />
-        <option value="$PROJECT_DIR$/src/commandsCreators/CreateCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Session.java" />
         <option value="$PROJECT_DIR$/src/Bot/UserManager.java" />
         <option value="$PROJECT_DIR$/src/Bot/User.java" />
-        <option value="$PROJECT_DIR$/src/User/User.java" />
         <option value="$PROJECT_DIR$/src/Bot.java" />
         <option value="$PROJECT_DIR$/src/Bot/IQuizBot.java" />
         <option value="$PROJECT_DIR$/src/Commands/ICommandFunction.java" />
         <option value="$PROJECT_DIR$/src/Commands/Command.java" />
-        <option value="$PROJECT_DIR$/src/Commands/CommandFunction.java" />
         <option value="$PROJECT_DIR$/todo.txt" />
         <option value="$PROJECT_DIR$/src/Bot/UserAction.java" />
         <option value="$PROJECT_DIR$/src/Commands/HelpCommandCreator.java" />
-        <option value="$PROJECT_DIR$/src/Commands/PlayCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Commands/FriendsCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Commands/MoviesCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Commands/ScoreCommandCreator.java" />
-        <option value="$PROJECT_DIR$/src/Commands/MeCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Commands/LoginCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Commands/CreateCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/User/UserManager.java" />
-        <option value="$PROJECT_DIR$/src/Commands/StartCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Data/MoviesGetter.java" />
         <option value="$PROJECT_DIR$/src/Bot/ButtonsLists.java" />
-        <option value="$PROJECT_DIR$/src/Commands/StopCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Data/TelegramStart.java" />
-        <option value="$PROJECT_DIR$/src/Test/BotThreadTest.java" />
         <option value="$PROJECT_DIR$/src/Game/ConsoleGame.java" />
         <option value="$PROJECT_DIR$/src/Test/BotTest.java" />
         <option value="$PROJECT_DIR$/src/Test/WithoutRegistrationTest.java" />
-        <option value="$PROJECT_DIR$/src/Test/PlayingTest.java" />
         <option value="$PROJECT_DIR$/src/Bot/QuizBot.java" />
-        <option value="$PROJECT_DIR$/src/Game/TelegramBot.java" />
         <option value="$PROJECT_DIR$/src/Game/TelegrammStart.java" />
         <option value="$PROJECT_DIR$/src/Game/TelegramStart.java" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/Test/WithoutLoginTest.java" />
         <option value="$PROJECT_DIR$/src/User/UserInfoGetter.java" />
         <option value="$PROJECT_DIR$/src/Test/GetInfoTest.java" />
-        <option value="$PROJECT_DIR$/src/Commands/AddCommandCreator.java" />
         <option value="$PROJECT_DIR$/src/Bot/BotMessages.java" />
-        <option value="$PROJECT_DIR$/src/Commands/CommandsCreator.java" />
         <option value="$PROJECT_DIR$/src/Test/GetSelfInfoTest.java" />
-        <option value="$PROJECT_DIR$/src/Test/RegistrationTest.java" />
         <option value="$PROJECT_DIR$/src/User/UserManagerForTest(extends).java" />
         <option value="$PROJECT_DIR$/src/Test/FriendsTest(wrong).java" />
         <option value="$PROJECT_DIR$/src/Test/FriendsTest.java" />
+        <option value="$PROJECT_DIR$/src/Bot/Session.java" />
+        <option value="$PROJECT_DIR$/src/Commands/CommandFunction.java" />
+        <option value="$PROJECT_DIR$/src/Commands/AddCommandCreator.java" />
+        <option value="$PROJECT_DIR$/src/Commands/ExitCommandCreator.java" />
+        <option value="$PROJECT_DIR$/src/Commands/StartCommandCreator.java" />
+        <option value="$PROJECT_DIR$/src/Commands/StopCommandCreator.java" />
+        <option value="$PROJECT_DIR$/src/User/User.java" />
+        <option value="$PROJECT_DIR$/src/Commands/MeCommandCreator.java" />
+        <option value="$PROJECT_DIR$/src/Commands/CommandsCreator.java" />
+        <option value="$PROJECT_DIR$/src/Commands/PlayCommandCreator.java" />
+        <option value="$PROJECT_DIR$/src/Test/PlayingTest.java" />
+        <option value="$PROJECT_DIR$/src/Test/BotThreadTest.java" />
+        <option value="$PROJECT_DIR$/src/Game/TelegramBot.java" />
+        <option value="$PROJECT_DIR$/src/Commands/SaveCommandCreator.java" />
+        <option value="$PROJECT_DIR$/src/Test/RegistrationTest.java" />
         <option value="$PROJECT_DIR$/src/User/UserManagerForTest.java" />
         <option value="$PROJECT_DIR$/src/Bot/Bot.java" />
-        <option value="$PROJECT_DIR$/src/Bot/Session.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-23" />
+    <option name="x" value="22" />
+    <option name="y" value="18" />
     <option name="width" value="1750" />
     <option name="height" value="980" />
   </component>
@@ -248,18 +278,6 @@
               <item name="java_movie_bot" type="b2602c69:ProjectViewProjectNode" />
               <item name="java_movie_bot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Bot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_movie_bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_movie_bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Commands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="java_movie_bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="java_movie_bot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -267,6 +285,18 @@
               <item name="java_movie_bot" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java_movie_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java_movie_bot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="java_movie_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="java_movie_bot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -342,18 +372,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.BotThreadTest.isCommandTestFalse">
-    <configuration name="TelegramStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Game.TelegramStart" />
-      <module name="java_movie_bot" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Game.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
+  <component name="RunManager" selected="TestNG.RegistrationTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method>
@@ -379,7 +398,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BotThreadTest.isCommandTestFalse" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="GetSelfInfoTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <module name="java_movie_bot" />
       <extension name="coverage">
         <pattern>
@@ -391,36 +410,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.BotThreadTest" />
-      <option name="METHOD_NAME" value="isCommandTestFalse" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <properties />
-      <listeners />
-    </configuration>
-    <configuration name="FriendsTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="java_movie_bot" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.FriendsTest" />
+      <option name="MAIN_CLASS_NAME" value="Test.GetSelfInfoTest" />
       <option name="METHOD_NAME" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
@@ -437,7 +427,7 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration name="FriendsTest.areFriendsIfBothAdd" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="PlayingTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <module name="java_movie_bot" />
       <extension name="coverage">
         <pattern>
@@ -449,12 +439,12 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.FriendsTest" />
-      <option name="METHOD_NAME" value="areFriendsIfBothAdd" />
+      <option name="MAIN_CLASS_NAME" value="Test.PlayingTest" />
+      <option name="METHOD_NAME" />
       <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="TEST_OBJECT" value="CLASS" />
       <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" value="0" />
+      <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="OUTPUT_DIRECTORY" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -466,7 +456,7 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration name="GetSelfInfoTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="RegistrationTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <module name="java_movie_bot" />
       <extension name="coverage">
         <pattern>
@@ -478,7 +468,65 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.GetSelfInfoTest" />
+      <option name="MAIN_CLASS_NAME" value="Test.RegistrationTest" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="RegistrationTest.canCreateUser" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="java_movie_bot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.RegistrationTest" />
+      <option name="METHOD_NAME" value="canCreateUser" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="WithoutLoginTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="java_movie_bot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.WithoutLoginTest" />
       <option name="METHOD_NAME" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
@@ -521,19 +569,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="TestNG.FriendsTest" />
       <item itemvalue="TestNG.GetSelfInfoTest" />
-      <item itemvalue="TestNG.FriendsTest.areFriendsIfBothAdd" />
-      <item itemvalue="Application.TelegramStart" />
-      <item itemvalue="TestNG.BotThreadTest.isCommandTestFalse" />
+      <item itemvalue="TestNG.PlayingTest" />
+      <item itemvalue="TestNG.RegistrationTest" />
+      <item itemvalue="TestNG.WithoutLoginTest" />
+      <item itemvalue="TestNG.RegistrationTest.canCreateUser" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG.BotThreadTest.isCommandTestFalse" />
-        <item itemvalue="Application.TelegramStart" />
-        <item itemvalue="TestNG.FriendsTest" />
+        <item itemvalue="TestNG.RegistrationTest" />
+        <item itemvalue="TestNG.RegistrationTest.canCreateUser" />
+        <item itemvalue="TestNG.WithoutLoginTest" />
         <item itemvalue="TestNG.GetSelfInfoTest" />
-        <item itemvalue="TestNG.FriendsTest.areFriendsIfBothAdd" />
+        <item itemvalue="TestNG.PlayingTest" />
       </list>
     </recent_temporary>
   </component>
@@ -555,35 +603,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FriendsTest - 2018.12.10 at 23h 35m 53s.xml">
-      <configuration name="FriendsTest" configurationId="TestNG" />
+    <history-entry file="RegistrationTest - 2018.12.11 at 12h 12m 41s.xml">
+      <configuration name="RegistrationTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="FriendsTest - 2018.12.10 at 23h 36m 44s.xml">
-      <configuration name="FriendsTest" configurationId="TestNG" />
+    <history-entry file="RegistrationTest - 2018.12.11 at 12h 13m 56s.xml">
+      <configuration name="RegistrationTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="RegistrationTest_canCreateUser - 2018.12.10 at 23h 39m 30s.xml">
+    <history-entry file="RegistrationTest_canCreateUser - 2018.12.11 at 12h 14m 23s.xml">
       <configuration name="RegistrationTest.canCreateUser" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="RegistrationTest_canCreateUser - 2018.12.10 at 23h 40m 03s.xml">
+    <history-entry file="RegistrationTest_canCreateUser - 2018.12.11 at 12h 21m 10s.xml">
       <configuration name="RegistrationTest.canCreateUser" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="FriendsTest - 2018.12.10 at 23h 48m 49s.xml">
-      <configuration name="FriendsTest" configurationId="TestNG" />
+    <history-entry file="RegistrationTest_canCreateUser - 2018.12.11 at 12h 21m 45s.xml">
+      <configuration name="RegistrationTest.canCreateUser" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="FriendsTest - 2018.12.10 at 23h 52m 09s.xml">
-      <configuration name="FriendsTest" configurationId="TestNG" />
+    <history-entry file="RegistrationTest_canCreateUser - 2018.12.11 at 12h 23m 57s.xml">
+      <configuration name="RegistrationTest.canCreateUser" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="FriendsTest_areFriendsIfBothAdd - 2018.12.10 at 23h 56m 59s.xml">
-      <configuration name="FriendsTest.areFriendsIfBothAdd" configurationId="TestNG" />
+    <history-entry file="RegistrationTest_canCreateUser - 2018.12.11 at 12h 24m 33s.xml">
+      <configuration name="RegistrationTest.canCreateUser" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="GetSelfInfoTest - 2018.12.11 at 07h 44m 48s.xml">
-      <configuration name="GetSelfInfoTest" configurationId="TestNG" />
+    <history-entry file="RegistrationTest - 2018.12.11 at 12h 25m 26s.xml">
+      <configuration name="RegistrationTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="GetSelfInfoTest - 2018.12.11 at 10h 42m 47s.xml">
-      <configuration name="GetSelfInfoTest" configurationId="TestNG" />
+    <history-entry file="RegistrationTest - 2018.12.11 at 12h 25m 50s.xml">
+      <configuration name="RegistrationTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="BotThreadTest_isCommandTestFalse - 2018.12.11 at 11h 01m 00s.xml">
-      <configuration name="BotThreadTest.isCommandTestFalse" configurationId="TestNG" />
+    <history-entry file="RegistrationTest - 2018.12.11 at 12h 25m 58s.xml">
+      <configuration name="RegistrationTest" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -593,99 +641,63 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4921875" weight="0.32827586" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Messages" order="21" sideWeight="0.4921875" weight="0.20965517" />
+      <window_info anchor="right" id="Palette&#9;" order="16" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50651044" side_tool="true" weight="0.16551724" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49414062" visible="true" weight="0.12965517" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50651044" side_tool="true" weight="0.16551724" />
+      <window_info anchor="right" id="Maven Projects" order="11" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49414062" visible="true" weight="0.08413793" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18815105" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18815105" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4934896" weight="0.32965517" />
       <window_info id="Learn" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.703125" weight="0.26482758" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.703125" weight="0.33681074" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50651044" side_tool="true" weight="0.16551724" />
+      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="18" sideWeight="0.50651044" side_tool="true" weight="0.16551724" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.18815105" />
       <window_info id="Learn" order="5" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.0" />
-      <window_info anchor="bottom" id="Java Enterprise" order="7" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="right" id="Coverage" order="17" side_tool="true" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Java Enterprise" order="15" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="bottom" id="Terminal" order="16" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.703125" weight="0.3586207" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="14" />
+      <window_info anchor="right" id="Maven Projects" order="15" />
+      <window_info anchor="bottom" id="Database Changes" order="17" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.703125" weight="0.3586207" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="13" />
+      <window_info anchor="right" id="Database" order="10" />
       <window_info id="Capture Tool" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4934896" weight="0.32965517" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="19" />
+      <window_info anchor="right" id="Capture Analysis" order="12" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="bottom" id="Find" order="4" sideWeight="0.4934896" weight="0.32965517" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="right" id="Bean Validation" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49414062" weight="0.13103448" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4921875" weight="0.32827586" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49414062" weight="0.13103448" />
+      <window_info anchor="bottom" id="Messages" order="20" sideWeight="0.4921875" weight="0.32827586" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info id="Designer" order="3" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info id="Designer" order="3" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49414062" visible="true" weight="0.13103448" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50651044" side_tool="true" weight="0.16551724" />
-      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.4921875" weight="0.32827586" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Java Enterprise" order="9" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" />
-      <window_info anchor="right" id="Maven Projects" order="10" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18815105" />
-      <window_info id="Learn" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" id="Coverage" order="11" side_tool="true" visible="true" weight="0.0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4934896" weight="0.32965517" />
-      <window_info anchor="right" id="Bean Validation" order="5" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.703125" weight="0.3586207" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -707,7 +719,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/User/User.java</url>
-          <line>17</line>
+          <line>15</line>
           <properties />
           <option name="timeStamp" value="18" />
         </line-breakpoint>
@@ -729,16 +741,28 @@
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Test/RegistrationTest.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Bot/Bot.java</url>
+          <line>115</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Bot/Bot.java</url>
-          <line>61</line>
+          <line>63</line>
           <properties class="Bot.Bot">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="26" />
+      <option name="time" value="31" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -747,39 +771,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/User/IUserManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="1191" column="24" selection-start-line="1191" selection-start-column="24" selection-end-line="1191" selection-end-column="24" />
-          <folding>
-            <element signature="e#46280#46281#0" expanded="true" />
-            <element signature="e#46307#46308#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bot/BotButtonsList.java" />
-    <entry file="jar://$USER_HOME$/Downloads/telegrambots-4.1-jar-with-dependencies(1).jar!/org/telegram/telegrambots/bots/TelegramLongPollingBot.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Data/MoviesGetter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tgbot_token.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -795,21 +786,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/WithoutRegistrationTest.java" />
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/testng/lib/testng.jar!/org/testng/internal/Invoker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="476" selection-start-line="476" selection-end-line="476" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/TelegrammStart.java" />
-    <entry file="file://$PROJECT_DIR$/src/Commands/PlayCommandCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="15" column="45" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -841,53 +818,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/User/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/CreateCommandCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="35" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/GetInfoTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
           <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/FriendsCommandCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="53" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/AddCommandCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/CommandsCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="62" column="48" lean-forward="true" selection-start-line="62" selection-start-column="48" selection-end-line="62" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getListOfBotCommands#0;class#CommandsCreator#0" />
-            <element signature="method#getBotCommands#0;class#CommandsCreator#0" />
-            <element signature="method#getHelp#0;class#CommandsCreator#0" />
           </folding>
         </state>
       </provider>
@@ -927,27 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/User/UserManagerForTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" lean-forward="true" selection-start-column="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/User/UserManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1313#1314#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/QuizBotTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -962,43 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/WithoutLoginTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/RegistrationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/PlayingTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/BotThreadTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3560">
-          <caret line="178" column="48" selection-start-line="178" selection-start-column="40" selection-end-line="178" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -1010,18 +888,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bot/ButtonsLists.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#136#137#0" expanded="true" />
-            <element signature="e#191#192#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1053,49 +919,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Game/TelegramBot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-280">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="method#setButtons#0;class#TelegramBot#0" />
-            <element signature="method#getBotToken#0;class#TelegramBot#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game/TelegramStart.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/GetSelfInfoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/StopCommandCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/StartCommandCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Commands/MeCommandCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1116,20 +943,61 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bot/Session.java">
+    <entry file="file://$PROJECT_DIR$/src/Commands/CommandFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="18" column="25" lean-forward="true" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+        <state relative-caret-position="140">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/AddCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/StopCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/StartCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="112" selection-start-line="14" selection-start-column="112" selection-end-line="14" selection-end-column="112" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/ExitCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/User/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#162#171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bot/QuizBot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="22" column="81" selection-start-line="22" selection-start-column="77" selection-end-line="22" selection-end-column="81" />
+        <state relative-caret-position="380">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#356#357#0" expanded="true" />
@@ -1140,14 +1008,181 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bot/Bot.java">
+    <entry file="file://$PROJECT_DIR$/src/Commands/MeCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="62" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/FriendsCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="53" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/CommandsCreator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="54" column="73" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="73" />
+          <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#identifyUser#0;class#Bot#0" />
-            <element signature="method#tryCreateUser#0;class#Bot#0" />
+            <element signature="method#getListOfBotCommands#0;class#CommandsCreator#0" />
+            <element signature="method#getBotCommands#0;class#CommandsCreator#0" />
+            <element signature="method#getHelp#0;class#CommandsCreator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/PlayCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="14" column="83" selection-start-line="14" selection-start-column="83" selection-end-line="14" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/BotThreadTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="66" column="36" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/GetSelfInfoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/CreateCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/User/IUserManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Commands/SaveCommandCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="39" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/User/UserManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1330">
+          <caret line="73" lean-forward="true" selection-start-line="23" selection-end-line="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1239#1240#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/testng/lib/testng.jar!/org/testng/internal/Invoker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="477" selection-start-line="477" selection-end-line="477" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/User/UserManagerForTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="50" lean-forward="true" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1057#1058#0" expanded="true" />
+            <element signature="e#1131#1132#0" expanded="true" />
+            <element signature="e#2213#2214#0" expanded="true" />
+            <element signature="e#2265#2266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bot/ButtonsLists.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#136#137#0" expanded="true" />
+            <element signature="e#191#192#0" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/RegistrationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/WithoutLoginTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/PlayingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Game/TelegramBot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="81" column="64" lean-forward="true" selection-start-line="81" selection-start-column="64" selection-end-line="81" selection-end-column="64" />
+          <folding>
+            <element signature="method#getBotToken#0;class#TelegramBot#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bot/Session.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bot/Bot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="128" column="20" selection-start-line="128" selection-start-column="17" selection-end-line="128" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -72,7 +72,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
         var chatId = Integer.valueOf(sendMessage.getChatId());
         KeyboardRow keyboardOneRow = new KeyboardRow();
-        for (String textButton : bot.sessions.get(chatId).toButtonsCommands) {
+        for (String textButton : bot.sessions.get(chatId).getToButtonsCommands()) {
             KeyboardButton button = new KeyboardButton("/" + textButton);
             keyboardOneRow.add(button);
         }

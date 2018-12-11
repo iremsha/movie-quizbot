@@ -21,7 +21,7 @@ public class RegistrationTest {
         Bot bot = new Bot(new QuizBot(null), UserManagerForTest.getInstance());
         bot.processInput("/create", 0);
         var output = bot.processInput("login password", 0);
-        var user = bot.sessions.get(0).user;
+        var user = bot.sessions.get(0).getUser();
         assertNotNull(user);
         assertEquals("login", user.Login);
     }
@@ -42,7 +42,7 @@ public class RegistrationTest {
         bot.processInput("/exit", 0);
         bot.processInput("/login", 0);
         bot.processInput("login password", 0);
-        var user = bot.sessions.get(0).user;
+        var user = bot.sessions.get(0).getUser();
         assertNotNull(user);
         assertEquals("login", user.Login);
     }
@@ -52,7 +52,7 @@ public class RegistrationTest {
         bot.processInput("/create", 0);
         bot.processInput("login password", 0);
         bot.processInput("/exit", 0);
-        var user = bot.sessions.get(0).user;
+        var user = bot.sessions.get(0).getUser();
         assertNull(user);
     }
 
@@ -61,7 +61,7 @@ public class RegistrationTest {
         Bot bot = new Bot(new QuizBot(null), UserManagerForTest.getInstance());
         bot.processInput("/login", 0);
         var output = bot.processInput("new_login password", 0);
-        var user = bot.sessions.get(0).user;
+        var user = bot.sessions.get(0).getUser();
         assertNull(user);
         assertEquals(BotMessages.noUserWithThisLogin, output.get(0));
     }
@@ -74,7 +74,7 @@ public class RegistrationTest {
         bot.processInput("/login", 0);
         var output = bot.processInput("login wrong_password", 0);
         assertEquals(BotMessages.incorrectPassword, output.get(0));
-        var user = bot.sessions.get(0).user;
+        var user = bot.sessions.get(0).getUser();
         assertNull(user);
     }
     @Test

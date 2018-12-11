@@ -64,7 +64,7 @@ class JThread extends Thread {
         //System.out.println(answerTwo);
 
         Session session = bot.sessions.get(chat_id);
-        var user = session.user;
+        var user = session.getUser();
         if (user != null){
             sessionsInThread.putIfAbsent(chat_id, session);
         }

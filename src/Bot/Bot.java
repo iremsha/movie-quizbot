@@ -42,18 +42,20 @@ public class Bot implements IBot {
 
         List<String> listMsg = new ArrayList<>();
         if(isPriorityCommand(command)){
-            listMsg.add(processCommand(command,argument, session));
+            listMsg.add(processCommand(command,argument, sessionId));
         }
-        else if(session.user == null || session.action == UserAction.create || session.action == UserAction.login ){
-            listMsg.add(identifyUser(command, argument, session));
+        else if(session.getUser() == null || session.getAction() == UserAction.create || session.getAction() == UserAction.login ){
+            listMsg.add(identifyUser(command, argument, sessionId));
         }
         else if (isCommand(userInput)) {
-            listMsg.add(processCommand(command, argument, session));
+            listMsg.add(processCommand(command, argument, sessionId));
         }
-        else if (session.action == UserAction.play) {
-            String quizBotAnswer = quizBot.analyzeUserAnswer(session.lastOfferedQuestion, userInput, session.user);
-            String nextQuestion = quizBot.getQuestionToOffer(session.user);
-            session.lastOfferedQuestion = nextQuestion;
+        else if (session.getAction() == UserAction.play) {
+            String quizBotAnswer = quizBot.analyzeUserAnswer(session.getLastOfferedQuestion(), userInput, session.getUser());
+            String nextQuestion = quizBot.getQuestionToOffer(session.getUser());
+            String lastOfferedQuestion = nextQuestion;
+            sessions.put(sessionId, new Session(session.getUser(), session.getAction(),
+                    lastOfferedQuestion, session.getAskForLoginAndPassword(), session.getToButtonsCommands()));
             listMsg.add(quizBotAnswer);
             listMsg.add(nextQuestion);
         } else {
@@ -62,67 +64,71 @@ public class Bot implements IBot {
         return listMsg;
     }
 
-    public String processCommand(String command, String argument, Session session) throws IOException{
-        session.askForLoginAndPassword = false;
-        return commands.get(command).Execute.commandFunction(this, argument, session);
+    public String processCommand(String command, String argument, int sessionId) throws IOException{
+        var session = sessions.get(sessionId);
+        sessions.put(sessionId, new Session(session.getUser(),
+                session.getAction(), session.getLastOfferedQuestion(),
+                false, session.getToButtonsCommands()));
+        return commands.get(command).Execute.commandFunction(this, argument, sessionId);
     }
 
+    //public Session changeSession(Session )
 
-    public String identifyUser(String command, String argument, Session session) throws IOException {
-        if (session.user == null){
-            session.toButtonsCommands = ButtonsLists.whenUserNull();
+    public String identifyUser(String command, String argument, int sessionId) throws IOException {
+        Session session = sessions.get(sessionId);
+        if (session.getUser() == null){
+            sessions.put(sessionId, new Session(null, null, null, false, ButtonsLists.whenUserNull()));
+
         }
         if (command.equals("login")||command.equals("create")){
-            session.action = UserAction.valueOf(command);
-            session.toButtonsCommands = new ArrayList<>();
-            session.askForLoginAndPassword = true;
-            session.toButtonsCommands = ButtonsLists.whenWaitForPassword();
+            var action = UserAction.valueOf(command);
+            sessions.put(sessionId, new Session(null, action, null, true, ButtonsLists.whenWaitForPassword()));
             return BotMessages.enterLoginAndPassword;
         }
-        if (session.askForLoginAndPassword){
+        if (session.getAskForLoginAndPassword()){
             String[] loginAndPassword = argument.split("\\s", 2);
             if (loginAndPassword.length != 2){
                 return BotMessages.enterLoginAndPassword;
             }
             String login = loginAndPassword[0];
             String password = loginAndPassword[1];
-            if (session.action == UserAction.login){
-                return tryLoginUser(login, password, session);
+            if (session.getAction() == UserAction.login){
+                return tryLoginUser(login, password, sessionId);
             }
-            if(session.action == UserAction.create){
-                return tryCreateUser(login, password, session);
+            if(session.getAction() == UserAction.create){
+                return tryCreateUser(login, password, sessionId);
                 }
         }
         return BotMessages.needToLogin;
     }
 
-    private String tryCreateUser(String login, String password, Session session) throws IOException {
+    private String tryCreateUser(String login, String password, int sessionId) throws IOException {
+        var session = sessions.get(sessionId);
         Lock lock = new ReentrantLock();
         lock.lock();
         if (userManager.isUserInDB(login)){
             return BotMessages.loginHasTaken;
         }
-        session.askForLoginAndPassword = false;
-        session.action = null;
-        session.user = userManager.createUser(login, password);
+        var user = userManager.createUser(login, password);
         lock.unlock();
-        commands.get("save").Execute.commandFunction(this, "", session);
-        session.toButtonsCommands  = ButtonsLists.whenNoPlaying();
-        return BotMessages.youLogInAs + " " + session.user.Login;
+        commands.get("save").Execute.commandFunction(this, "", sessionId);
+        session = new Session(user, null, null, false, ButtonsLists.whenNoPlaying());
+        sessions.put(sessionId, session);
+        return BotMessages.youLogInAs + " " + session.getUser().Login;
     }
 
-    private String tryLoginUser(String login, String password, Session session){
+    private String tryLoginUser(String login, String password, int sessionId){
         if (!userManager.isUserInDB(login)){
             return BotMessages.noUserWithThisLogin;
         }
         if (!userManager.isCorrectPassword(login, password)){
             return BotMessages.incorrectPassword;
         }
-        session.askForLoginAndPassword = false;
-        session.action = null;
-        session.user = userManager.getUser(login);
-        session.toButtonsCommands = ButtonsLists.whenNoPlaying();
-        return BotMessages.youLogInAs + " " + session.user.Login;
+//        sessions.computeIfPresent(sessionId, null, null);
+        var user = userManager.getUser(login);
+        sessions.put(sessionId, new Session(user, null, null, false, ButtonsLists.whenNoPlaying()));
+
+        return BotMessages.youLogInAs + " " + sessions.get(sessionId).getUser().Login;
     }
 
 
