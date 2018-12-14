@@ -62,9 +62,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="java_movie_bot" level="project" />
-    <orderEntry type="library" name="jsoup-1.11.31" level="project" />
-    <orderEntry type="library" name="telegrambots-4.1-jar-with-dependencies" level="project" />
-    <orderEntry type="library" name="jsoup-1.11.3" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
