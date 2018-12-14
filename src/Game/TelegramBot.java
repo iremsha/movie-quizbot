@@ -10,9 +10,6 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,75 +90,6 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        List<String> lines = null;
-        try {
-            lines = Files.readAllLines(Paths.get("tgbot_token.txt"), StandardCharsets.UTF_8);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        for(String line: lines){
-            return line;
-        }
-        return "";
+        return "636216034:AAEKpAOwLzSO64opwX4FkcozW7OUv79-Xmc";
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-//import org.telegram.telegrambots.api.objects.Update;
-//
-//public class Game.TelegramBot extends TelegramLongPollingBot{
-//    public static void main(String[] args) {
-//        ApiContextInitializer.init(); // Инициализируем апи
-//        TelegramBotsApi botapi = new TelegramBotsApi();
-//        try {
-//            botapi.registerBot(new Bot.Bot());
-//        } catch (TelegramApiException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//    @Override
-//    public String getBotUsername() {
-//        return "USER";
-//        //возвращаем юзера
-//    }
-//
-//    @Override
-//    public void onUpdateReceived(Update e) {
-//        // Тут будет то, что выполняется при получении сообщения
-//    }
-//
-//    @Override
-//    public String getBotToken() {
-//        return "YOUR_BOT_TOKEN";
-//        //Токен бота
-//    }
-//
-//}
