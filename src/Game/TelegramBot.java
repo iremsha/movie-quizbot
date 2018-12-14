@@ -10,9 +10,6 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class TelegramBot extends TelegramLongPollingBot {
         this.bot = bot;
     }
 
-    @Overrideы
+    @Override
     public void onUpdateReceived(Update update) {
         String input_msg = update.getMessage().getText();
         Long chat_id = update.getMessage().getChatId();
