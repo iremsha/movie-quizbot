@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata modelVersion="1.1.0">
   <groupId>com.movie.bot</groupId>
-  <artifactId>MovieBot</artifactId>
+  <artifactId>java_movie_bot</artifactId>
   <version>1.0-SNAPSHOT</version>
   <versioning>
     <snapshot>
       <localCopy>true</localCopy>
     </snapshot>
-    <lastUpdated>20181217085824</lastUpdated>
+    <lastUpdated>20181217093512</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
         <value>1.0-SNAPSHOT</value>
-        <updated>20181217085824</updated>
+        <updated>20181217093512</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
