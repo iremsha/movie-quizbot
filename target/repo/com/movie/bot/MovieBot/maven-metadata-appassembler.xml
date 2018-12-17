@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.movie.bot</groupId>
+  <artifactId>MovieBot</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20181217085824</lastUpdated>
+  </versioning>
+</metadata>

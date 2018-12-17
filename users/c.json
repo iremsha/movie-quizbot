@@ -1,1 +1,7 @@
-{"Login":"c","passwordHash":99,"Known":[],"Friends":[],"score":0}
+{
+  "Login": "c",
+  "passwordHash": 99,
+  "Known": [],
+  "Friends": [],
+  "score": 0
+}
