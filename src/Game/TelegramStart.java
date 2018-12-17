@@ -18,6 +18,7 @@ public class TelegramStart {
         QuizBot quizBot = new QuizBot(data);
         UserManager userManager = UserManager.getInstance();
         Bot bot = new Bot(quizBot, userManager);
+        
 
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
