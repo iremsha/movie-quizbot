@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10470a17-ec47-4bbb-abce-62da1dbc4269" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Game/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Game/TelegramBot.java" afterDir="false" />
-    </list>
+    <list default="true" id="10470a17-ec47-4bbb-abce-62da1dbc4269" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -204,7 +202,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="20" />
     <option name="y" value="15" />
     <option name="width" value="1750" />
@@ -277,7 +275,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545119433890" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545119434907" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Global Libraries" />
@@ -373,7 +371,7 @@
       <workItem from="1545038429504" duration="1538000" />
       <workItem from="1545112755165" duration="1675000" />
       <workItem from="1545115638898" duration="2034000" />
-      <workItem from="1545118668340" duration="761000" />
+      <workItem from="1545118668340" duration="1237000" />
     </task>
     <servers />
   </component>
@@ -383,10 +381,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10044000" />
+    <option name="totallyTimeSpent" value="10520000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="16" y="12" width="1400" height="784" extended-state="0" />
+    <frame x="16" y="12" width="1400" height="784" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25746268" />
