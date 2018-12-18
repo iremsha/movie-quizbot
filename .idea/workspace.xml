@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="10470a17-ec47-4bbb-abce-62da1dbc4269" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Game/ConsoleGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Game/ConsoleGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bot/Game/TelegramBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Game/TelegramBot.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,12 +17,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/bot/Game/TelegramBot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="318">
+              <caret line="94" column="10" selection-start-line="94" selection-start-column="10" selection-end-line="94" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3145#3146#0" expanded="true" />
-                <element signature="e#3200#3201#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -280,7 +277,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545119242697" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545119433890" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Global Libraries" />
@@ -376,7 +373,7 @@
       <workItem from="1545038429504" duration="1538000" />
       <workItem from="1545112755165" duration="1675000" />
       <workItem from="1545115638898" duration="2034000" />
-      <workItem from="1545118668340" duration="571000" />
+      <workItem from="1545118668340" duration="761000" />
     </task>
     <servers />
   </component>
@@ -386,7 +383,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9854000" />
+    <option name="totallyTimeSpent" value="10044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="16" y="12" width="1400" height="784" extended-state="0" />
@@ -871,12 +868,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bot/Game/TelegramBot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="318">
+          <caret line="94" column="10" selection-start-line="94" selection-start-column="10" selection-end-line="94" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3145#3146#0" expanded="true" />
-            <element signature="e#3200#3201#0" expanded="true" />
           </folding>
         </state>
       </provider>
