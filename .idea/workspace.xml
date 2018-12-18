@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10470a17-ec47-4bbb-abce-62da1dbc4269" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Bot/Bot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Bot/Bot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Bot/ButtonsLists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Bot/ButtonsLists.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Bot/QuizBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Bot/QuizBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Bot/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Bot/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Commands/AddCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Commands/AddCommandCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Commands/CommandsCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Commands/CommandsCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/Commands/MeCommandCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/Commands/MeCommandCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/User/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/User/UserInfoGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/User/UserInfoGetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/User/UserManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/User/UserManagerForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/User/UserManagerForTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bot/User/UsersSaver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bot/User/UsersSaver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/Bot/Bot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/Bot/Bot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/Bot/ButtonsLists.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/Bot/ButtonsLists.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/Bot/QuizBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/Bot/QuizBot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/Commands/AddCommandCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/Commands/AddCommandCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/Commands/CommandsCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/Commands/CommandsCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/Commands/MeCommandCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/Commands/MeCommandCreator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/Game/TelegramBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/Game/TelegramBot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/User/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/User/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/User/UserInfoGetter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/User/UserInfoGetter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/User/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/User/UserManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/User/UserManagerForTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/User/UserManagerForTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bot/User/UsersSaver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bot/User/UsersSaver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/b.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/c.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/f.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/g.json" beforeDir="false" />
-    </list>
+    <list default="true" id="10470a17-ec47-4bbb-abce-62da1dbc4269" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bot/Game/TelegramBot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="94" column="8" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
+            <state relative-caret-position="332">
+              <caret line="84" column="5" lean-forward="true" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3145#3146#0" expanded="true" />
@@ -127,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/bot/Bot/ButtonsLists.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="119">
+              <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#412#413#0" expanded="true" />
@@ -337,7 +306,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545117848322" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545117850575" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Global Libraries" />
@@ -418,7 +387,7 @@
       <workItem from="1545033546988" duration="4036000" />
       <workItem from="1545038429504" duration="1538000" />
       <workItem from="1545112755165" duration="1675000" />
-      <workItem from="1545115638898" duration="2034000" />
+      <workItem from="1545115638898" duration="2389000" />
     </task>
     <servers />
   </component>
@@ -428,13 +397,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9283000" />
+    <option name="totallyTimeSpent" value="9638000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="16" y="12" width="1400" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25373134" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25373134" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -443,7 +412,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33282208" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33282208" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -822,20 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bot/Bot/ButtonsLists.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#412#413#0" expanded="true" />
-            <element signature="e#495#496#0" expanded="true" />
-            <element signature="e#549#550#0" expanded="true" />
-            <element signature="e#617#618#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bot/User/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -918,12 +873,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bot/Game/TelegramBot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="94" column="8" lean-forward="true" selection-start-line="94" selection-start-column="8" selection-end-line="94" selection-end-column="8" />
+        <state relative-caret-position="332">
+          <caret line="84" column="5" lean-forward="true" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3145#3146#0" expanded="true" />
             <element signature="e#3200#3201#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bot/Bot/ButtonsLists.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#412#413#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#549#550#0" expanded="true" />
+            <element signature="e#617#618#0" expanded="true" />
           </folding>
         </state>
       </provider>
