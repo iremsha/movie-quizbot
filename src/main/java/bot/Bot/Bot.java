@@ -110,7 +110,7 @@ public class Bot implements IBot {
         commands.get("save").Execute.commandFunction(this, "", sessionId);
         session = new Session(user, null, null, false, ButtonsLists.whenNoPlaying());
         sessions.put(sessionId, session);
-        return BotMessages.youLogInAs + " " + session.getUser().Login;
+        return BotMessages.youLogInAs + " " + session.getUser().getLogin();
     }
 
     private String tryLoginUser(String login, String password, int sessionId) {
@@ -124,7 +124,7 @@ public class Bot implements IBot {
         var user = userManager.getUser(login);
         sessions.put(sessionId, new Session(user, null, null, false, ButtonsLists.whenNoPlaying()));
 
-        return BotMessages.youLogInAs + " " + sessions.get(sessionId).getUser().Login;
+        return BotMessages.youLogInAs + " " + sessions.get(sessionId).getUser().getLogin();
     }
 
 

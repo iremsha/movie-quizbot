@@ -1,24 +1,29 @@
 package bot.User;
 
-import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class User {
-    public String Login;
-    public int passwordHash;
+    private String login;
+    public String getLogin(){return login;}
 
-    public HashSet<String> Known = new HashSet<String>();
+    private int passwordHash;
+    public int getPasswordHash(){return passwordHash;}
 
-    public HashSet<String> Friends = new HashSet<>();
+//    public HashSet<String> Known = new HashSet<String >();
+//    public HashSet<String> Friends = new HashSet<>();
+
+    public Set<String> Known = ConcurrentHashMap.newKeySet();
+    public Set<String> Friends = ConcurrentHashMap.newKeySet();
 
     private int score;
 
     User(String login, String password) {
-        this.Login = login;
+        this.login = login;
         this.passwordHash = password.hashCode();
     }
 
-    User() {
-    }
+
 
     public int getScore() {
         return this.Known.size();

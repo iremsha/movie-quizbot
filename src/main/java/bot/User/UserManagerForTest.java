@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class UserManagerForTest implements IUserManager {
-    private static UserManagerForTest instance;
     private ConcurrentHashMap<String, User> dataBase;
 
     private UserManagerForTest() throws IOException {
@@ -28,7 +27,7 @@ public class UserManagerForTest implements IUserManager {
 
     public boolean isCorrectPassword(String login, String password) {
         User user = getUser(login);
-        return user.passwordHash == password.hashCode();
+        return user.getPasswordHash() == password.hashCode();
     }
 
     public User getUser(String userName) {//mb write if not return null
@@ -41,13 +40,13 @@ public class UserManagerForTest implements IUserManager {
     }
 
     public boolean areFriends(User user1, User user2) {
-        return user1.Friends.contains(user2.Login) && user2.Friends.contains(user1.Login);
+        return user1.Friends.contains(user2.getLogin()) && user2.Friends.contains(user1.getLogin());
     }
 
     public boolean areFriends(String userLogin1, String userLogin2) {
         var user1 = getUser(userLogin1);
         var user2 = getUser(userLogin2);
-        return user1.Friends.contains(user2.Login) && user2.Friends.contains(user1.Login);
+        return user1.Friends.contains(user2.getLogin()) && user2.Friends.contains(user1.getLogin());
     }
 
     public void saveChanges() throws IOException {

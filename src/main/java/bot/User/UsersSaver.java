@@ -14,7 +14,7 @@ public class UsersSaver {
     private static String folderPath = "users";
 
     public static void saveUser(User user) throws IOException {
-        String filePath = String.format("%s\\%s.json", folderPath, user.Login);
+        String filePath = String.format("%s\\%s.json", folderPath, user.getLogin());
 //        System.out.println(filePath);
         if (!Files.exists(Paths.get(filePath))) Files.createFile(Paths.get(filePath));
         ObjectMapper mapper = new ObjectMapper();
@@ -36,7 +36,7 @@ public class UsersSaver {
         ObjectMapper mapper = new ObjectMapper();
         for (var file : new File(folderPath).listFiles()) {
             User nextUser = mapper.readValue(file, User.class);
-            hashMap.put(nextUser.Login, nextUser);
+            hashMap.put(nextUser.getLogin(), nextUser);
         }
         return hashMap;
     }

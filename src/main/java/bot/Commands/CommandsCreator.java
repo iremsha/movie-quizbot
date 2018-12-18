@@ -65,13 +65,13 @@ public class CommandsCreator {
 
     public static String getUserInfoCommand(UserInfo info, Bot bot, String login, int sessionId) throws IOException {
         var session = bot.sessions.get(sessionId);
-        if (login.equals("") || login.equals(session.getUser().Login)) {
+        if (login.equals("") || login.equals(session.getUser().getLogin())) {
             return UserInfoGetter.get(info, session.getUser());
         }
         if (!bot.userManager.isUserInDB(login)) {
             return BotMessages.noUserWithThisLogin;
         }
-        if (!bot.userManager.hasUserPermission(session.getUser().Login, login)) {
+        if (!bot.userManager.hasUserPermission(session.getUser().getLogin(), login)) {
             return BotMessages.canSeeOnlyFriendsInfo;
         }
         return UserInfoGetter.get(info, bot.userManager.getUser(login));

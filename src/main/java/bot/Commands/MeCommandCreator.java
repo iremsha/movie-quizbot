@@ -5,7 +5,7 @@ public class MeCommandCreator {
         String name = "me";
         String description = "check your login";
         CommandFunction commandFunction = (bot, login, sessionId) -> {
-            return bot.sessions.get(sessionId).getUser().Login;
+            return bot.sessions.get(sessionId).getUser().getLogin();
         };
         return new Command(name, description, commandFunction);
     }
