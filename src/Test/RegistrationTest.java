@@ -23,7 +23,7 @@ public class RegistrationTest {
         var output = bot.processInput("login password", 0);
         var user = bot.sessions.get(0).getUser();
         assertNotNull(user);
-        assertEquals("login", user.Login);
+        assertEquals("login", user.getLogin());
     }
     @Test
     public void canNotCreateWithTakenLogin() throws IOException {
@@ -44,7 +44,7 @@ public class RegistrationTest {
         bot.processInput("login password", 0);
         var user = bot.sessions.get(0).getUser();
         assertNotNull(user);
-        assertEquals("login", user.Login);
+        assertEquals("login", user.getLogin());
     }
     @Test
     public void canLogout() throws IOException {

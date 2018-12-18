@@ -5,12 +5,12 @@ import User.User;
 import java.util.List;
 
 public class Session {
-    //    public int Id;
+
     private User user;
     private UserAction action;
     private String lastOfferedQuestion;
     private boolean askForLoginAndPassword;
-    private List<String> toButtonsCommands;// = new ArrayList<>();
+    private List<String> toButtonsCommands;
 
     public Session(){
     }
