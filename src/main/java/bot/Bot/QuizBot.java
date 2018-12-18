@@ -3,8 +3,8 @@ package bot.Bot;
 import bot.User.User;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class QuizBot implements IQuizBot {
 
@@ -52,7 +52,7 @@ public class QuizBot implements IQuizBot {
         addKnowQuestion(user, question);
     }
 
-    HashSet<String> addKnowQuestion(User user, String question) {
+    Set<String> addKnowQuestion(User user, String question){
         user.Known.add(question);
         return user.Known;
     }

@@ -24,7 +24,7 @@ public class UserInfoGetter {
         var follows = user.Friends;
         for (var followName : follows) {
             var followUser = userManager.getUser(followName);
-            if (followUser.Friends.contains(user.Login)) {
+            if (followUser.Friends.contains(user.getLogin())){
                 trueFriends.add(followName);
             }
         }

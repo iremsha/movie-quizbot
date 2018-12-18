@@ -12,13 +12,13 @@ public class AddCommandCreator {
             if (login.equals("")) {
                 return BotMessages.needLoginAfterCommand;
             }
-            if (login.equals(session.getUser().Login)) {
+            if (login.equals(session.getUser().getLogin())) {
                 return BotMessages.cantAddYourSelf;
             }
             if (!bot.userManager.isUserInDB(login)) {
                 return BotMessages.noUserWithThisLogin;
             }
-            bot.userManager.addFriendToUser(session.getUser().Login, login);
+            bot.userManager.addFriendToUser(session.getUser().getLogin(), login);
             return "Done";
         };
         return new Command(name, description, commandFunction);
