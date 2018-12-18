@@ -24,7 +24,6 @@ public class User {
     }
 
 
-    }
 
     public int getScore() {
         return this.Known.size();
