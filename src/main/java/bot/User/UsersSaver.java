@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class UsersSaver {
 
@@ -34,7 +35,10 @@ public class UsersSaver {
     public static HashMap<String, User> getAllUsers() throws IOException {
         HashMap<String, User> hashMap = new HashMap<>();
         ObjectMapper mapper = new ObjectMapper();
-        for (var file : new File(folderPath).listFiles()) {
+        for (var file : Objects.requireNonNull(new File(folderPath).listFiles())) {
+            if ("admin.json".equals(file.getName())) {
+                continue;
+            }
             User nextUser = mapper.readValue(file, User.class);
             hashMap.put(nextUser.getLogin(), nextUser);
         }
