@@ -10,4 +10,6 @@
 # Изображение
 ![Screenshot](Screenshot_1.png)
 
-# EDU
+# Группа
+- Аn
+- Remsha
